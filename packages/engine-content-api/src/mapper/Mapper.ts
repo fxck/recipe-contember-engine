@@ -19,6 +19,7 @@ import { UpdateBuilder } from './update'
 import { Mutex } from '../utils'
 import { CheckedPrimary } from './CheckedPrimary'
 import { ConstraintHelper } from '@contember/database'
+import { InsertBuilder } from './insert'
 
 export class Mapper {
 	private primaryKeyCache: Record<string, Promise<string> | string> = {}
@@ -158,42 +159,31 @@ export class Mapper {
 		return Object.fromEntries(result)
 	}
 
-	public async insert(entity: Model.Entity, data: Input.CreateDataInput): Promise<MutationResultList> {
-		return tryMutation(() =>
-			this.inserter.insert(this, entity, data, id => {
-				const where = { [entity.primary]: id }
-				this.primaryKeyCache[this.hashWhere(entity.name, where)] = id
-			}),
-		)
+	public async insert(
+		entity: Model.Entity,
+		data: Input.CreateDataInput,
+		builderCb: (builder: InsertBuilder) => void = () => {},
+	): Promise<MutationResultList> {
+		const pushId = (id: string) => {
+			const where = { [entity.primary]: id }
+			this.primaryKeyCache[this.hashWhere(entity.name, where)] = id
+		}
+		return tryMutation(() => this.inserter.insert(this, entity, data, pushId, builderCb))
 	}
 
 	public async update(
 		entity: Model.Entity,
 		by: Input.UniqueWhere,
 		data: Input.UpdateDataInput,
-		filter?: Input.OptionalWhere,
+		filter: Input.OptionalWhere = {},
+		builderCb: (builder: UpdateBuilder) => void = () => {},
 	): Promise<MutationResultList> {
 		return tryMutation(async () => {
 			const primaryValue = await this.getPrimaryValue(entity, by)
 			if (primaryValue === undefined) {
 				return [new MutationEntryNotFoundError([], by)]
 			}
-			return await this.updater.update(this, entity, primaryValue, data, filter)
-		})
-	}
-
-	public async updateInternal(
-		entity: Model.Entity,
-		by: Input.UniqueWhere,
-		predicateFields: string[],
-		builderCb: (builder: UpdateBuilder) => void,
-	): Promise<MutationResultList> {
-		return tryMutation(async () => {
-			const primaryValue = await this.getPrimaryValue(entity, by)
-			if (primaryValue === undefined) {
-				return [new MutationEntryNotFoundError([], by)]
-			}
-			return await this.updater.updateCb(this, entity, primaryValue, predicateFields, builderCb)
+			return await this.updater.update(this, entity, primaryValue, data, filter, builderCb)
 		})
 	}
 
@@ -207,12 +197,13 @@ export class Mapper {
 		return tryMutation(async () => {
 			const primaryValue = await this.getPrimaryValue(entity, by)
 			if (primaryValue === undefined) {
-				return await this.inserter.insert(this, entity, create, id => {
+				const pushIdCallback = (id: string) => {
 					const where = { [entity.primary]: id }
 					this.primaryKeyCache[this.hashWhere(entity.name, where)] = id
-				})
+				}
+				return await this.inserter.insert(this, entity, create, pushIdCallback, () => {})
 			}
-			return await this.updater.update(this, entity, primaryValue, update, filter)
+			return await this.updater.update(this, entity, primaryValue, update, filter || {}, () => {})
 		})
 	}
 

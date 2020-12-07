@@ -104,11 +104,13 @@ export const createMapperContainer = ({ permissions, schema, identityVariables, 
 		)
 		.addService(
 			'insertBuilderFactory',
-			({ whereBuilder, pathFactory }) => new InsertBuilderFactory(schema.model, whereBuilder, pathFactory),
+			({ whereBuilder, pathFactory, predicateFactory }) =>
+				new InsertBuilderFactory(schema.model, whereBuilder, pathFactory, predicateFactory),
 		)
 		.addService(
 			'updateBuilderFactory',
-			({ whereBuilder, pathFactory }) => new UpdateBuilderFactory(schema.model, whereBuilder, pathFactory),
+			({ whereBuilder, pathFactory, predicateFactory }) =>
+				new UpdateBuilderFactory(schema.model, whereBuilder, pathFactory, predicateFactory),
 		)
 
 		.addService('connectJunctionHandler', () => new JunctionConnectHandler())
@@ -136,8 +138,7 @@ export const createMapperContainer = ({ permissions, schema, identityVariables, 
 		)
 		.addService(
 			'inserter',
-			({ predicateFactory, insertBuilderFactory, providers }) =>
-				new Inserter(schema.model, predicateFactory, insertBuilderFactory, providers),
+			({ insertBuilderFactory, providers }) => new Inserter(schema.model, insertBuilderFactory, providers),
 		)
 
 		.addService(
