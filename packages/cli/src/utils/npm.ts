@@ -1,7 +1,6 @@
-import { pathExists } from 'fs-extra'
 import { join } from 'path'
-import { runCommand } from './commands'
-import { listDirectories } from '@contember/cli-common'
+import { runCommand } from './commands.js'
+import { pathExists, listDirectories } from '@contember/cli-common'
 
 export interface NpmPackageUpdate {
 	name: string

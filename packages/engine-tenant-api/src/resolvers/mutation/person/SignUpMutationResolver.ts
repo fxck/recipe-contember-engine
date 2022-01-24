@@ -1,7 +1,7 @@
-import { MutationResolvers, MutationSignUpArgs, SignUpResponse } from '../../../schema'
-import { ResolverContext } from '../../ResolverContext'
-import { PermissionActions, ApiKeyManager, SignUpManager } from '../../../model'
-import { createErrorResponse } from '../../errorUtils'
+import { MutationResolvers, MutationSignUpArgs, SignUpResponse } from '../../../schema/index.js'
+import { ResolverContext } from '../../ResolverContext.js'
+import { PermissionActions, ApiKeyManager, SignUpManager } from '../../../model/index.js'
+import { createErrorResponse } from '../../errorUtils.js'
 
 export class SignUpMutationResolver implements MutationResolvers {
 	constructor(private readonly signUpManager: SignUpManager, private readonly apiKeyManager: ApiKeyManager) {}

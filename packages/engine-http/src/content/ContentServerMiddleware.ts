@@ -1,9 +1,9 @@
-import { KoaMiddleware } from '../koa'
-import { ProjectMemberMiddlewareState, ProjectResolveMiddlewareState } from '../project-common'
-import { AuthMiddlewareState, TimerMiddlewareState } from '../common'
+import { KoaMiddleware } from '../koa/index.js'
+import { ProjectMemberMiddlewareState, ProjectResolveMiddlewareState } from '../project-common/index.js'
+import { AuthMiddlewareState, TimerMiddlewareState } from '../common/index.js'
 import { Client } from '@contember/database'
 import { formatSchemaName, unnamedIdentity } from '@contember/engine-system-api'
-import { StageResolveMiddlewareState } from './StageResolveMiddlewareFactory'
+import { StageResolveMiddlewareState } from './StageResolveMiddlewareFactory.js'
 
 type InputKoaState =
 	& ProjectMemberMiddlewareState

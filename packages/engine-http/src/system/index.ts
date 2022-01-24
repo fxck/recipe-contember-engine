@@ -1,1 +1,1 @@
-export * from './SystemGraphQLMiddlewareFactory'
+export * from './SystemGraphQLMiddlewareFactory.js'

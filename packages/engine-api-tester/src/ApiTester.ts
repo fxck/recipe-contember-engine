@@ -15,18 +15,19 @@ import {
 	PermissionsByIdentityFactory,
 } from '@contember/engine-content-api'
 import { makeExecutableSchema } from '@graphql-tools/schema'
-import { ContentApiTester } from './ContentApiTester'
-import { SystemApiTester } from './SystemApiTester'
-import { TesterStageManager } from './TesterStageManager'
-import { Client, EventManagerImpl, SingleConnection } from '@contember/database'
-import { createUuidGenerator } from './testUuid'
-import { project } from './project'
-import { createConnection, dbCredentials, recreateDatabase } from './dbUtils'
-import { join } from 'path'
+import { ContentApiTester } from './ContentApiTester.js'
+import { SystemApiTester } from './SystemApiTester.js'
+import { TesterStageManager } from './TesterStageManager.js'
+import { Client, EventManagerImpl, SingleConnection, DatabaseCredentials } from '@contember/database'
+import { createUuidGenerator } from './testUuid.js'
+import { project } from './project.js'
+import { createConnection, dbCredentials, recreateDatabase } from './dbUtils.js'
+import { dirname, join } from 'path'
 import { createPgClient, MigrationsRunner } from '@contember/database-migrations'
-import { ClientBase } from 'pg'
-import { DatabaseCredentials } from '@contember/database'
-import getSystemMigrations from '@contember/engine-system-api/migrations'
+import  pg from 'pg'
+import { getSystemMigrations } from '@contember/engine-system-api'
+import { fileURLToPath } from 'url'
+
 
 export class ApiTester {
 	public static project = project
@@ -75,7 +76,7 @@ export class ApiTester {
 					return Promise.resolve([])
 				},
 			},
-			systemDbMigrationsRunnerFactory: (db: DatabaseCredentials, dbClient: ClientBase) =>
+			systemDbMigrationsRunnerFactory: (db: DatabaseCredentials, dbClient: pg.Client) =>
 				new MigrationsRunner(db, 'system', getSystemMigrations, dbClient),
 		})
 		if (options.systemContainerHook) {
@@ -146,6 +147,6 @@ export class ApiTester {
 	}
 
 	public static getMigrationsDir(): string {
-		return join(__dirname + '/../../src')
+		return join(dirname(fileURLToPath(import.meta.url)), '/../../src')
 	}
 }

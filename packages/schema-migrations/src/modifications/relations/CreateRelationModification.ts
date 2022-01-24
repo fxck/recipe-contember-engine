@@ -7,11 +7,11 @@ import {
 	NamingHelper,
 } from '@contember/schema-utils'
 import { MigrationBuilder } from '@contember/database-migrations'
-import { addField, SchemaUpdater, updateEntity, updateModel } from '../utils/schemaUpdateUtils'
-import { ModificationHandlerStatic } from '../ModificationHandler'
-import { createEventTrigger, createEventTrxTrigger } from '../utils/sqlUpdateUtils'
-import { isIt } from '../../utils/isIt'
-import { createFields } from '../utils/diffUtils'
+import { addField, SchemaUpdater, updateEntity, updateModel } from '../utils/schemaUpdateUtils.js'
+import { ModificationHandlerStatic } from '../ModificationHandler.js'
+import { createEventTrigger, createEventTrxTrigger } from '../utils/sqlUpdateUtils.js'
+import { isIt } from '../../utils/isIt.js'
+import { createFields } from '../utils/diffUtils.js'
 
 const getPrimaryType = (entity: Model.Entity): string => {
 	const column = entity.fields[entity.primary] as Model.AnyColumn

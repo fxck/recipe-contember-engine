@@ -1,8 +1,8 @@
-import { ProjectResolveMiddlewareState } from '../project-common'
-import { StageResolveMiddlewareState } from './StageResolveMiddlewareFactory'
-import { KoaMiddleware } from '../koa'
+import { ProjectResolveMiddlewareState } from '../project-common/index.js'
+import { StageResolveMiddlewareState } from './StageResolveMiddlewareFactory.js'
+import { KoaMiddleware } from '../koa/index.js'
 import { LatestTransactionIdByStageQuery } from '@contember/engine-system-api'
-import { TimerMiddlewareState } from '../common'
+import { TimerMiddlewareState } from '../common/index.js'
 
 type InputKoaState =
 	& ProjectResolveMiddlewareState

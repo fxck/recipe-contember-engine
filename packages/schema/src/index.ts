@@ -1,11 +1,11 @@
-import Input from './schema/input'
-import Model from './schema/model'
-import Acl from './schema/acl'
-import Validation from './schema/validation'
-import Value from './schema/value'
-import Result from './schema/result'
+import Input from './schema/input.js'
+import Model from './schema/model.js'
+import Acl from './schema/acl.js'
+import Validation from './schema/validation.js'
+import Value from './schema/value.js'
+import Result from './schema/result.js'
 
-export * from './ProjectRole'
+export * from './ProjectRole.js'
 
 type Schema = {
 	model: Model.Schema

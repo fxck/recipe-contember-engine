@@ -1,6 +1,6 @@
 import { suite } from 'uvu'
 import { InputValidation as v, SchemaDefinition as d } from '@contember/schema-definition'
-import { createSchema, testCreate } from '../utils'
+import { createSchema, testCreate } from '../utils.js'
 
 const test = suite('Min length rule')
 

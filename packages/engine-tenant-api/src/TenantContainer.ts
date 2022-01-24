@@ -31,7 +31,7 @@ import {
 	SignInManager,
 	SignUpManager,
 	UserMailer,
-} from './model'
+} from './model/index.js'
 import {
 	AddProjectMemberMutationResolver,
 	ChangePasswordMutationResolver,
@@ -57,11 +57,11 @@ import {
 	SignUpMutationResolver,
 	UpdateProjectMemberMutationResolver,
 	UpdateProjectMutationResolver,
-} from './resolvers'
-import * as Schema from './schema'
-import { createMailer, MailerOptions, TemplateRenderer } from './utils'
-import { MigrationsRunnerFactory, TenantCredentials } from './migrations'
-import { IdentityFetcher } from './bridges/system/IdentityFetcher'
+} from './resolvers/index.js'
+import * as Schema from './schema/index.js'
+import { createMailer, MailerOptions, TemplateRenderer } from './utils/index.js'
+import { MigrationsRunnerFactory, TenantCredentials } from './migrations/index.js'
+import { IdentityFetcher } from './bridges/system/IdentityFetcher.js'
 
 export type ConnectionType = Connection.ConnectionLike & Connection.ClientFactory & Connection.PoolStatusProvider
 

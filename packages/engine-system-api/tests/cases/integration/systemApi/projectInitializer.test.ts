@@ -1,7 +1,7 @@
 import { ApiTester } from '@contember/engine-api-tester'
-import { ProjectConfig, StageConfig } from '../../../../src'
+import { ProjectConfig, StageConfig } from '../../../../src/index.js'
 import { suite } from 'uvu'
-import * as assert from '../../../src/asserts'
+import * as assert from '../../../src/asserts.js'
 import { Logger } from '@contember/engine-common'
 
 const projectInitializerTest = suite('Project initializer')

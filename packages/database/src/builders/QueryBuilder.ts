@@ -1,7 +1,7 @@
-import { Literal } from '../Literal'
-import { Value } from '../types'
-import { ColumnExpressionFactory } from './ColumnExpressionFactory'
-import { Compiler } from './Compiler'
+import { Literal } from '../Literal.js'
+import { Value } from '../types.js'
+import { ColumnExpressionFactory } from './ColumnExpressionFactory.js'
+import { Compiler } from './Compiler.js'
 
 interface QueryBuilder {
 	createQuery(context: Compiler.Context): Literal

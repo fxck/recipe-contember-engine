@@ -1,6 +1,5 @@
 import { basename, join, resolve } from 'path'
-import { pathExists } from 'fs-extra'
-import { listDirectories } from './fs'
+import { listDirectories, pathExists } from './fs.js'
 
 export type PathMapping = Record<string, string>
 export const resolvePathMappingConfig = async (

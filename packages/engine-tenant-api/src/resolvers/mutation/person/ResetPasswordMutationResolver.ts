@@ -6,17 +6,17 @@ import {
 	MutationResolvers,
 	ResetPasswordErrorCode as SchemaResetPasswordErrorCode,
 	ResetPasswordResponse,
-} from '../../../schema'
+} from '../../../schema/index.js'
 import { GraphQLResolveInfo } from 'graphql'
-import { ResolverContext } from '../../ResolverContext'
+import { ResolverContext } from '../../ResolverContext.js'
 import {
 	PasswordResetManager,
 	PermissionActions, PermissionContextFactory,
 	PersonQuery,
 	ResetPasswordCommandErrorCode,
 	ResetPasswordErrorCode,
-} from '../../../model'
-import { createErrorResponse } from '../../errorUtils'
+} from '../../../model/index.js'
+import { createErrorResponse } from '../../errorUtils.js'
 
 export class ResetPasswordMutationResolver implements MutationResolvers {
 	constructor(

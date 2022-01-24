@@ -1,7 +1,7 @@
 import { MigrationsRunnerFactory, ProjectGroupProvider, ProjectManager } from '@contember/engine-tenant-api'
 import { ProjectInitializer } from '@contember/engine-system-api'
 import { Logger } from '@contember/engine-common'
-import { ProjectContainerResolver } from '../project'
+import { ProjectContainerResolver } from '../project/index.js'
 import { ProjectConfig } from '@contember/engine-http'
 import { Migration } from '@contember/schema-migrations'
 

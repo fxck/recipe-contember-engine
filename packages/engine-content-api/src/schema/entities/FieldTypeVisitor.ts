@@ -1,7 +1,7 @@
 import { GraphQLList, GraphQLNonNull, GraphQLOutputType } from 'graphql'
 import { Model } from '@contember/schema'
-import { ColumnTypeResolver } from '../ColumnTypeResolver'
-import { EntityTypeProvider } from '../EntityTypeProvider'
+import { ColumnTypeResolver } from '../ColumnTypeResolver.js'
+import { EntityTypeProvider } from '../EntityTypeProvider.js'
 
 export class FieldTypeVisitor implements Model.ColumnVisitor<GraphQLOutputType>, Model.RelationByGenericTypeVisitor<GraphQLOutputType> {
 	private columnTypeResolver: ColumnTypeResolver

@@ -1,6 +1,6 @@
 import * as assert from 'uvu/assert'
 import { suite } from 'uvu'
-import { createAclVariables } from '../../../src'
+import { createAclVariables } from '../../../src/index.js'
 import { Acl } from '@contember/schema'
 import { testUuid } from '@contember/engine-api-tester'
 

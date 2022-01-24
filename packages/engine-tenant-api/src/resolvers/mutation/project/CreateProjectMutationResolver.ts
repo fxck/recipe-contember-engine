@@ -3,10 +3,10 @@ import {
 	CreateProjectResponseErrorCode,
 	MutationCreateProjectArgs,
 	MutationResolvers,
-} from '../../../schema'
-import { ResolverContext } from '../../ResolverContext'
-import { isTokenHash, PermissionActions, ProjectManager } from '../../../model'
-import { createErrorResponse } from '../../errorUtils'
+} from '../../../schema/index.js'
+import { ResolverContext } from '../../ResolverContext.js'
+import { isTokenHash, PermissionActions, ProjectManager } from '../../../model/index.js'
+import { createErrorResponse } from '../../errorUtils.js'
 import { UserInputError } from 'apollo-server-errors'
 
 export class CreateProjectMutationResolver implements MutationResolvers {

@@ -1,5 +1,5 @@
 import { Schema } from '@contember/schema'
-import { DatabaseContext } from '../utils'
+import { DatabaseContext } from '../utils/index.js'
 
 export interface Project {
 	readonly id: string

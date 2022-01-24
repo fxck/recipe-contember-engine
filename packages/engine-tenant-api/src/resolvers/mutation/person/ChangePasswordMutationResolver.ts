@@ -6,11 +6,11 @@ import {
 	MutationChangeMyPasswordArgs,
 	MutationChangePasswordArgs,
 	MutationResolvers,
-} from '../../../schema'
+} from '../../../schema/index.js'
 import { GraphQLResolveInfo } from 'graphql'
-import { ResolverContext } from '../../ResolverContext'
-import { DatabaseContext, IdentityScope, PasswordChangeManager, PermissionActions, PersonQuery } from '../../../model'
-import { createErrorResponse } from '../../errorUtils'
+import { ResolverContext } from '../../ResolverContext.js'
+import { DatabaseContext, IdentityScope, PasswordChangeManager, PermissionActions, PersonQuery } from '../../../model/index.js'
+import { createErrorResponse } from '../../errorUtils.js'
 
 export class ChangePasswordMutationResolver implements MutationResolvers {
 	constructor(

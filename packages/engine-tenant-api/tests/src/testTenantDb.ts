@@ -1,5 +1,5 @@
-import { GraphQLTestQuery } from '../cases/integration/mocked/gql/types'
-import { testUuid } from './testUuid'
+import { GraphQLTestQuery } from '../cases/integration/mocked/gql/types.js'
+import { testUuid } from './testUuid.js'
 import {
 	computeTokenHash,
 	CreateProjectCommand,
@@ -10,19 +10,19 @@ import {
 	StaticIdentity,
 	TenantContainerFactory,
 	typeDefs,
-} from '../../src'
+} from '../../src/index.js'
 import { Buffer } from 'buffer'
 import { makeExecutableSchema } from '@graphql-tools/schema'
 import { Acl, Schema } from '@contember/schema'
-import { createMockedMailer, MockedMailer } from './mailer'
-import { dbCredentials, recreateDatabase } from './dbUtils'
+import { createMockedMailer, MockedMailer } from './mailer.js'
+import { dbCredentials, recreateDatabase } from './dbUtils.js'
 import { MigrationsRunner } from '@contember/database-migrations'
 import { graphql } from 'graphql'
-import { Membership } from '../../src/model/type/Membership'
+import { Membership } from '../../src/model/type/Membership.js'
 import { Connection } from '@contember/database'
 import * as uvu from 'uvu'
 import * as assert from 'uvu/assert'
-import { TenantMigrationArgs } from '../../src/migrations'
+import { TenantMigrationArgs } from '../../src/migrations/index.js'
 
 export interface TenantTest {
 	query: GraphQLTestQuery

@@ -3,14 +3,14 @@ import {
 	MutationUpdateProjectMemberArgs,
 	UpdateProjectMemberErrorCode,
 	UpdateProjectMemberResponse,
-} from '../../../schema'
-import { ResolverContext } from '../../ResolverContext'
-import { PermissionActions, ProjectManager, ProjectMemberManager } from '../../../model'
-import { createMembershipValidationErrorResult } from '../../membershipUtils'
-import { MembershipValidationErrorType, MembershipValidator } from '../../../model/service/MembershipValidator'
-import { createMembershipModification } from '../../../model/service/membershipUtils'
-import { Membership } from '../../../model/type/Membership'
-import { createErrorResponse, createProjectNotFoundResponse } from '../../errorUtils'
+} from '../../../schema/index.js'
+import { ResolverContext } from '../../ResolverContext.js'
+import { PermissionActions, ProjectManager, ProjectMemberManager } from '../../../model/index.js'
+import { createMembershipValidationErrorResult } from '../../membershipUtils.js'
+import { MembershipValidationErrorType, MembershipValidator } from '../../../model/service/MembershipValidator.js'
+import { createMembershipModification } from '../../../model/service/membershipUtils.js'
+import { Membership } from '../../../model/type/Membership.js'
+import { createErrorResponse, createProjectNotFoundResponse } from '../../errorUtils.js'
 
 export class UpdateProjectMemberMutationResolver implements MutationResolvers {
 	constructor(

@@ -27,15 +27,15 @@ SOFTWARE.
  */
 
 import path, { join } from 'path'
-import Db, { DBConnection } from 'node-pg-migrate/dist/db'
-import { LogFn, Logger, RunnerOptionClient, RunnerOptionUrl } from 'node-pg-migrate/dist/types'
-import { createSchemalize, getSchemas } from 'node-pg-migrate/dist/utils'
-import migrateSqlFile from 'node-pg-migrate/dist/sqlMigration'
+import { LogFn, Logger } from 'node-pg-migrate/dist/types'
+import { createSchemalize, getSchemas } from 'node-pg-migrate/dist/utils.js'
+import migrateSqlFile from 'node-pg-migrate/dist/sqlMigration.js'
 import { MigrationBuilder } from 'node-pg-migrate'
-import { createMigrationBuilder } from './helpers'
+import { createMigrationBuilder } from './helpers.js'
 import { readdir } from 'fs/promises'
+import { Client, ClientBase } from 'pg'
 
-export interface RunnerOptionConfig {
+export interface RunnerOption {
 	migrationsTable: string
 	migrationsSchema?: string
 	schema?: string
@@ -45,9 +45,9 @@ export interface RunnerOptionConfig {
 	logger?: Logger
 	verbose?: boolean
 	migrationArgs?: any
+	dbClient: Client
+	shouldHandleConnection?: boolean
 }
-
-export declare type RunnerOption = RunnerOptionConfig & (RunnerOptionClient | RunnerOptionUrl)
 
 // Random but well-known identifier shared by all instances of node-pg-migrate
 const PG_MIGRATE_LOCK_ID = 7241865325823964
@@ -60,6 +60,7 @@ export class Migration {
 	constructor(
 		public readonly name: string,
 		public readonly migration: (builder: MigrationBuilder, args: any) => Promise<void> | void,
+
 	) {}
 }
 
@@ -71,7 +72,7 @@ export const loadMigrations = async (sqlDir: string, additional: Migration[]): P
 			)
 				.filter(it => path.extname(it) === '.sql')
 				.map(async it => {
-					const migration = (await migrateSqlFile(join(sqlDir, it))).up
+					const migration = (await (migrateSqlFile as any).default(join(sqlDir, it))).up
 					if (!migration) {
 						throw new Error()
 					}
@@ -83,14 +84,14 @@ export const loadMigrations = async (sqlDir: string, additional: Migration[]): P
 		.sort((a, b) => a.name.localeCompare(b.name))
 }
 
-const lock = async (db: DBConnection): Promise<void> => {
-	await db.select(`select pg_advisory_lock(${PG_MIGRATE_LOCK_ID})`)
+const lock = async (db: ClientBase): Promise<void> => {
+	await db.query(`select pg_advisory_lock(${PG_MIGRATE_LOCK_ID})`)
 }
 
-const unlock = async (db: DBConnection): Promise<void> => {
-	const [result] = await db.select(`select pg_advisory_unlock(${PG_MIGRATE_LOCK_ID}) as "lockReleased"`)
+const unlock = async (db: ClientBase): Promise<void> => {
+	const { rows } = await db.query<{ lockReleased: boolean }>(`select pg_advisory_unlock(${PG_MIGRATE_LOCK_ID}) as "lockReleased"`)
 
-	if (!result.lockReleased) {
+	if (!rows[0].lockReleased) {
 		throw new Error('Failed to release migration lock')
 	}
 }
@@ -106,7 +107,7 @@ const getMigrationsTableName = (options: RunnerOption): string => {
 		name: migrationsTable,
 	})
 }
-const ensureMigrationsTable = async (db: DBConnection, options: RunnerOption): Promise<void> => {
+const ensureMigrationsTable = async (db: ClientBase, options: RunnerOption): Promise<void> => {
 	try {
 		const fullTableName = getMigrationsTableName(options)
 		await db.query(
@@ -120,9 +121,9 @@ const ensureMigrationsTable = async (db: DBConnection, options: RunnerOption): P
 	}
 }
 
-const getRunMigrations = async (db: DBConnection, options: RunnerOption) => {
+const getRunMigrations = async (db: Client, options: RunnerOption) => {
 	const fullTableName = getMigrationsTableName(options)
-	return db.column(nameColumn, `SELECT ${nameColumn} FROM ${fullTableName} ORDER BY ${runOnColumn}, ${idColumn}`)
+	return (await db.query(`SELECT ${nameColumn} FROM ${fullTableName} ORDER BY ${runOnColumn}, ${idColumn}`)).rows.map(it => it[nameColumn])
 }
 
 const getMigrationsToRun = (options: RunnerOption, runNames: string[], migrations: Migration[]): Migration[] => {
@@ -158,9 +159,11 @@ export default async (
 	options: RunnerOption,
 ): Promise<{ name: string }[]> => {
 	const logger = getLogger(options)
-	const db = Db((options as RunnerOptionClient).dbClient || (options as RunnerOptionUrl).databaseUrl, logger)
+	const db = options.dbClient
 	try {
-		await db.createConnection()
+		if (options.shouldHandleConnection) {
+			await db.connect()
+		}
 		await lock(db)
 
 		if (options.schema) {
@@ -224,6 +227,8 @@ export default async (
 		}))
 	} finally {
 		await unlock(db).catch(error => logger.warn(error.message))
-		await db.close()
+		if (options.shouldHandleConnection) {
+			await db.end()
+		}
 	}
 }

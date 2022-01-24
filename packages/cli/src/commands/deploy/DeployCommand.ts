@@ -1,16 +1,15 @@
-import { Command, CommandConfiguration, Input, Workspace } from '@contember/cli-common'
+import { Command, CommandConfiguration, Input, pathExists, Workspace } from '@contember/cli-common'
 import {
 	configureExecuteMigrationCommand,
 	ExecuteMigrationOptions,
 	executeMigrations,
 	resolveMigrationStatus,
-} from '../migrations/MigrationExecuteHelper'
-import { pathExists } from 'fs-extra'
-import { interactiveResolveApiToken, TenantClient } from '../../utils/tenant'
-import { interactiveResolveInstanceEnvironmentFromInput } from '../../utils/instance'
-import { SystemClient } from '../../utils/system'
-import { MigrationsContainerFactory } from '../../MigrationsContainer'
-import { AdminClient, readAdminFiles } from '../../utils/admin'
+} from '../migrations/MigrationExecuteHelper.js'
+import { interactiveResolveApiToken, TenantClient } from '../../utils/tenant.js'
+import { interactiveResolveInstanceEnvironmentFromInput } from '../../utils/instance/index.js'
+import { SystemClient } from '../../utils/system/index.js'
+import { MigrationsContainerFactory } from '../../MigrationsContainer.js'
+import { AdminClient, readAdminFiles } from '../../utils/admin.js'
 
 type Args = {
 	project: string

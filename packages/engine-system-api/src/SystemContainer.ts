@@ -21,8 +21,8 @@ import {
 	ProjectTruncateExecutor,
 	SchemaVersionBuilder,
 	StageCreator,
-} from './model'
-import { UuidProvider } from './utils'
+} from './model/index.js'
+import { UuidProvider } from './utils/index.js'
 import {
 	EventsQueryResolver,
 	ExecutedMigrationsQueryResolver,
@@ -32,10 +32,10 @@ import {
 	ResolverFactory,
 	StagesQueryResolver,
 	TruncateMutationResolver,
-} from './resolvers'
-import { ClientBase } from 'pg'
-import { MigrationArgs } from './migrations'
-import { EventOldValuesResolver } from './resolvers/types'
+} from './resolvers/index.js'
+import  pg from 'pg'
+import { SystemMigrationArgs } from './migrations/types.js'
+import { EventOldValuesResolver } from './resolvers/types/index.js'
 
 export interface SystemContainer {
 	systemResolversFactory: ResolverFactory
@@ -46,13 +46,13 @@ export interface SystemContainer {
 	systemDbMigrationsRunnerFactory: SystemDbMigrationsRunnerFactory
 }
 
-export type SystemDbMigrationsRunnerFactory = (db: DatabaseCredentials, dbClient: ClientBase) => MigrationsRunner<MigrationArgs>
+export type SystemDbMigrationsRunnerFactory = (db: DatabaseCredentials, dbClient: pg.Client) => MigrationsRunner<SystemMigrationArgs>
 
 type Args = {
 	providers: UuidProvider
 	modificationHandlerFactory: ModificationHandlerFactory
 	entitiesSelector: EntitiesSelector
-	systemDbMigrationsRunnerFactory: (db: DatabaseCredentials, dbClient: ClientBase) => MigrationsRunner<MigrationArgs>
+	systemDbMigrationsRunnerFactory: (db: DatabaseCredentials, dbClient: pg.Client) => MigrationsRunner<SystemMigrationArgs>
 	identityFetcher: IdentityFetcher
 }
 

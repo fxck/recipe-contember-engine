@@ -1,4 +1,4 @@
-import { KoaMiddleware } from '../koa'
+import { KoaMiddleware } from '../koa/index.js'
 
 type EventTime = { label: string; start: number; duration?: number }
 

@@ -1,9 +1,9 @@
 import { Client } from '@contember/database'
 import { Acl, Model, Schema, Input } from '@contember/schema'
-import { Mapper } from '../../mapper'
+import { Mapper } from '../../mapper/index.js'
 import { acceptFieldVisitor, getEntity } from '@contember/schema-utils'
-import { FieldNode, ObjectNode } from '../../inputProcessing'
-import { PermissionsByIdentityFactory } from '../../acl'
+import { FieldNode, ObjectNode } from '../../inputProcessing/index.js'
+import { PermissionsByIdentityFactory } from '../../acl/index.js'
 
 export type EntitiesRelationsInput = readonly {
 	name: string

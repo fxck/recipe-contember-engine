@@ -3,10 +3,10 @@ import {
 	MutationResolvers,
 	RemoveProjectMemberErrorCode,
 	RemoveProjectMemberResponse,
-} from '../../../schema'
-import { ResolverContext } from '../../ResolverContext'
-import { PermissionActions, ProjectManager, ProjectMemberManager } from '../../../model'
-import { createErrorResponse, createProjectNotFoundResponse } from '../../errorUtils'
+} from '../../../schema/index.js'
+import { ResolverContext } from '../../ResolverContext.js'
+import { PermissionActions, ProjectManager, ProjectMemberManager } from '../../../model/index.js'
+import { createErrorResponse, createProjectNotFoundResponse } from '../../errorUtils.js'
 
 export class RemoveProjectMemberMutationResolver implements MutationResolvers {
 	constructor(

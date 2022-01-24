@@ -1,8 +1,8 @@
 import { Typesafe } from '@contember/engine-common'
 import { Client, custom, errors, generators, Issuer, ResponseType } from 'openid-client'
-import { IDPResponseError } from './IDPResponseError'
-import { IdentityProvider, IDPClaim, IDPResponse, InitIDPAuthResult } from './IdentityProvider'
-import { IDPValidationError } from './IDPValidationError'
+import { IDPResponseError } from './IDPResponseError.js'
+import { IdentityProvider, IDPClaim, IDPResponse, InitIDPAuthResult } from './IdentityProvider.js'
+import { IDPValidationError } from './IDPValidationError.js'
 
 custom.setHttpOptionsDefaults({
 	timeout: 5000,

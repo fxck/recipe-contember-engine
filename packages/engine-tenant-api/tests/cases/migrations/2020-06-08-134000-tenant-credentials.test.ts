@@ -1,4 +1,4 @@
-import migration from './2020-06-08-134000-tenant-credentials'
+import migration from '../../../src/migrations/2020-06-08-134000-tenant-credentials.js'
 import { createMigrationBuilder } from '@contember/database-migrations'
 import { suite } from 'uvu'
 import * as assert from 'uvu/assert'
@@ -51,10 +51,6 @@ credentialsMigrationTest('generate sql with root token and login token', async (
 			)
 			SELECT * FROM person, api_key
 		;
-UPDATE "api_key"
-	         SET "disabled_at" = now()
-	         WHERE "token_hash" = '081115df5d291465362f17c4b7b182da6aaa6d8147a0fec1aca8435eec404612'
-	               AND "disabled_at" IS NULL;
 `,
 	)
 })
@@ -97,10 +93,6 @@ credentialsMigrationTest('generate sql with both root user and token', async () 
 			)
 			SELECT * FROM person, api_key
 		;
-UPDATE "api_key"
-	         SET "disabled_at" = now()
-	         WHERE "token_hash" = '081115df5d291465362f17c4b7b182da6aaa6d8147a0fec1aca8435eec404612'
-	               AND "disabled_at" IS NULL;
 `,
 	)
 })

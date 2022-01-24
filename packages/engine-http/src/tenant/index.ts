@@ -1,1 +1,1 @@
-export * from './TenantGraphQLMiddlewareFactory'
+export * from './TenantGraphQLMiddlewareFactory.js'

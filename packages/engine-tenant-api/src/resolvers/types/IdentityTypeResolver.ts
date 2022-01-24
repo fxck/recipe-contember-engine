@@ -1,15 +1,15 @@
-import { Identity, IdentityProjectRelation, IdentityResolvers, Maybe, Person } from '../../schema'
+import { Identity, IdentityProjectRelation, IdentityResolvers, Maybe, Person } from '../../schema/index.js'
 import {
 	DatabaseContext,
 	PersonByIdentityBatchQuery,
 	PersonRow,
 	ProjectManager,
 	ProjectMemberManager,
-} from '../../model'
-import { ResolverContext } from '../ResolverContext'
-import { notEmpty } from '../../utils/array'
-import { createBatchLoader } from '../../utils/batchQuery'
-import { ImplementationException } from '../../exceptions'
+} from '../../model/index.js'
+import { ResolverContext } from '../ResolverContext.js'
+import { notEmpty } from '../../utils/array.js'
+import { createBatchLoader } from '../../utils/batchQuery.js'
+import { ImplementationException } from '../../exceptions.js'
 
 export class IdentityTypeResolver implements IdentityResolvers {
 	private personLoader = createBatchLoader<{ id: string; db: DatabaseContext }, Record<string, PersonRow>, PersonRow>(

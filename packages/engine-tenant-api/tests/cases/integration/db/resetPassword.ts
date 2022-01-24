@@ -1,9 +1,9 @@
-import { dbSuite } from '../../../src/testTenantDb'
-import { signUpMutation } from '../mocked/gql/signUp'
-import { createResetPasswordRequestMutation } from '../mocked/gql/createResetPasswordRequest'
-import { TenantRole } from '../../../../src/model/authorization'
-import { resetPasswordMutation } from '../mocked/gql/resetPassword'
-import { signInMutation } from '../mocked/gql/signIn'
+import { dbSuite } from '../../../src/testTenantDb.js'
+import { signUpMutation } from '../mocked/gql/signUp.js'
+import { createResetPasswordRequestMutation } from '../mocked/gql/createResetPasswordRequest.js'
+import { TenantRole } from '../../../../src/model/authorization/index.js'
+import { resetPasswordMutation } from '../mocked/gql/resetPassword.js'
+import { signInMutation } from '../mocked/gql/signIn.js'
 import * as assert from 'uvu/assert'
 
 const resetPassword = dbSuite('reset password')

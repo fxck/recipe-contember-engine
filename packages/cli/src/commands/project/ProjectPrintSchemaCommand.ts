@@ -1,7 +1,6 @@
-import { Command, CommandConfiguration, Input } from '@contember/cli-common'
+import { Command, CommandConfiguration, Input, Workspace, validateProjectName } from '@contember/cli-common'
 import { Schema } from '@contember/schema'
-import { validateSchemaAndPrintErrors } from '../../utils/schema'
-import { Workspace, validateProjectName } from '@contember/cli-common'
+import { validateSchemaAndPrintErrors } from '../../utils/schema.js'
 import {
 	EntityRulesResolver,
 	GraphQlSchemaBuilderFactory,

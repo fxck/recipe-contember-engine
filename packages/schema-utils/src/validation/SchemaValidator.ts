@@ -1,10 +1,10 @@
 import { Schema } from '@contember/schema'
-import { ValidationError } from './errors'
-import { AclValidator } from './AclValidator'
-import { ModelValidator } from './ModelValidator'
+import { ValidationError } from './errors.js'
+import { AclValidator } from './AclValidator.js'
+import { ModelValidator } from './ModelValidator.js'
 import { isDeepStrictEqual } from 'util'
-import { ValidationValidator } from './ValidationValidator'
-import { deepCompare } from '../utils'
+import { ValidationValidator } from './ValidationValidator.js'
+import { deepCompare } from '../utils/index.js'
 
 export class SchemaValidator {
 	public static validate(schema: Schema): ValidationError[] {

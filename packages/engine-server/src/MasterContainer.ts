@@ -4,17 +4,16 @@ import {
 	EntitiesSelectorMapperFactory,
 	PermissionsByIdentityFactory,
 } from '@contember/engine-content-api'
-import { SystemContainerFactory } from '@contember/engine-system-api'
+import { getSystemMigrations, SystemContainerFactory } from '@contember/engine-system-api'
 import { ProjectInitializer as ProjectInitializerInterface, TenantContainerFactory } from '@contember/engine-tenant-api'
-import getSystemMigrations from '@contember/engine-system-api/migrations'
 import { Builder } from '@contember/dic'
-import { Config } from './config/config'
-import { createDbMetricsRegistrar, logSentryError, ProcessType } from './utils'
+import { Config } from './config/config.js'
+import { createDbMetricsRegistrar, logSentryError, ProcessType } from './utils/index.js'
 import { ModificationHandlerFactory } from '@contember/schema-migrations'
-import { Initializer } from './bootstrap'
+import { Initializer } from './bootstrap/index.js'
 import { Plugin } from '@contember/engine-plugins'
 import { DatabaseCredentials, MigrationsRunner } from '@contember/database-migrations'
-import { createColllectHttpMetricsMiddleware, createShowMetricsMiddleware } from './http'
+import { createColllectHttpMetricsMiddleware, createShowMetricsMiddleware } from './http/index.js'
 import {
 	ApiMiddlewareFactory,
 	AuthMiddlewareFactory,
@@ -46,8 +45,8 @@ import {
 	ProjectInitializerProxy,
 	ProjectSchemaResolver,
 	ProjectSchemaResolverProxy,
-} from './project'
-import { ClientBase } from 'pg'
+} from './project/index.js'
+import  pg from 'pg'
 import { createSecretKey } from 'crypto'
 import koaCompress from 'koa-compress'
 import bodyParser from 'koa-bodyparser'
@@ -127,7 +126,7 @@ export class MasterContainerFactory {
 				return new EntitiesSelector(mapperFactory, permissionsByIdentityFactory)
 			})
 			.addService('systemDbMigrationsRunnerFactory', () =>
-				(db: DatabaseCredentials, dbClient: ClientBase) =>
+				(db: DatabaseCredentials, dbClient: pg.Client) =>
 					new MigrationsRunner(db, 'system', getSystemMigrations, dbClient))
 			.addService('systemContainer', ({ systemContainerFactory, entitiesSelector, modificationHandlerFactory, providers, systemDbMigrationsRunnerFactory, tenantContainer }) =>
 				systemContainerFactory.create({

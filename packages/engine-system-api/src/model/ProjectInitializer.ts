@@ -1,9 +1,9 @@
-import { unnamedIdentity } from './helpers'
-import { ProjectConfig, StageConfig } from '../types'
-import { ProjectMigrator, SchemaVersionBuilder } from './migrations'
-import { StageCreator } from './stages'
-import { DatabaseContext, DatabaseContextFactory } from './database'
-import { SystemDbMigrationsRunnerFactory } from '../SystemContainer'
+import { unnamedIdentity } from './helpers/index.js'
+import { ProjectConfig, StageConfig } from '../types.js'
+import { ProjectMigrator, SchemaVersionBuilder } from './migrations/index.js'
+import { StageCreator } from './stages/index.js'
+import { DatabaseContext, DatabaseContextFactory } from './database/index.js'
+import { SystemDbMigrationsRunnerFactory } from '../SystemContainer.js'
 import {
 	Connection,
 	DatabaseCredentials,

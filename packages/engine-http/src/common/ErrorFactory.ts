@@ -1,5 +1,5 @@
-import { KoaContext } from '../koa'
-import { AuthMiddlewareState } from './AuthMiddleware'
+import { KoaContext } from '../koa/index.js'
+import { AuthMiddlewareState } from './AuthMiddleware.js'
 
 export class ErrorFactory {
 	constructor(

@@ -1,4 +1,4 @@
-import { Mailer, MailMessage, SentInfo } from '../../src/utils'
+import { Mailer, MailMessage, SentInfo } from '../../src/utils/index.js'
 import * as assert from 'uvu/assert'
 
 export type ExpectedMessage = { subject: string }

@@ -1,8 +1,8 @@
-import { KoaMiddleware } from '../koa'
-import { ProjectResolveMiddlewareState } from './ProjectResolveMiddlewareFactory'
-import { AuthMiddlewareState, ErrorFactory, TimerMiddlewareState } from '../common'
+import { KoaMiddleware } from '../koa/index.js'
+import { ProjectResolveMiddlewareState } from './ProjectResolveMiddlewareFactory.js'
+import { AuthMiddlewareState, ErrorFactory, TimerMiddlewareState } from '../common/index.js'
 import { ProjectMemberManager } from '@contember/engine-tenant-api'
-import { ProjectGroupState } from './ProjectGroupMiddleware'
+import { ProjectGroupState } from './ProjectGroupMiddleware.js'
 
 type InputKoaState =
 	& AuthMiddlewareState

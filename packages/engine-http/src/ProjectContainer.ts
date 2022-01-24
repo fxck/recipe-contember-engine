@@ -1,7 +1,7 @@
 import { DatabaseContextFactory } from '@contember/engine-system-api'
 import { Connection } from '@contember/database'
-import { ContentQueryHandlerProvider, ContentSchemaResolver } from './content'
-import { ProjectConfig } from './ProjectConfig'
+import { ContentQueryHandlerProvider, ContentSchemaResolver } from './content/index.js'
+import { ProjectConfig } from './ProjectConfig.js'
 import { ProjectGroup } from '@contember/engine-tenant-api'
 
 export interface ProjectContainer {

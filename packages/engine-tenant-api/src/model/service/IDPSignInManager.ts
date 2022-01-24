@@ -1,9 +1,9 @@
-import { ApiKeyManager } from '../service'
-import { IdentityProviderQuery, PersonQuery, PersonRow } from '../queries'
-import { IDPManager, IDPResponse, IDPResponseError, IDPValidationError } from './idp'
-import { Response, ResponseError, ResponseOk } from '../utils/Response'
-import { InitSignInIdpErrorCode, SignInIdpErrorCode } from '../../schema'
-import { DatabaseContext } from '../utils'
+import { ApiKeyManager } from '../service/index.js'
+import { IdentityProviderQuery, PersonQuery, PersonRow } from '../queries/index.js'
+import { IDPManager, IDPResponse, IDPResponseError, IDPValidationError } from './idp/index.js'
+import { Response, ResponseError, ResponseOk } from '../utils/Response.js'
+import { InitSignInIdpErrorCode, SignInIdpErrorCode } from '../../schema/index.js'
+import { DatabaseContext } from '../utils/index.js'
 
 class IDPSignInManager {
 	constructor(

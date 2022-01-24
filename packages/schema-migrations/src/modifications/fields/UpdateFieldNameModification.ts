@@ -12,12 +12,12 @@ import {
 	updateEveryField,
 	updateModel,
 	updateSchema,
-} from '../utils/schemaUpdateUtils'
-import { ModificationHandlerStatic } from '../ModificationHandler'
+} from '../utils/schemaUpdateUtils.js'
+import { ModificationHandlerStatic } from '../ModificationHandler.js'
 import { acceptFieldVisitor, NamingHelper, PredicateDefinitionProcessor } from '@contember/schema-utils'
-import { VERSION_ACL_PATCH, VERSION_UPDATE_CONSTRAINT_NAME } from '../ModificationVersions'
-import { renameConstraintSchemaUpdater, renameConstraintsSqlBuilder } from '../utils/renameConstraintsHelper'
-import { changeValue } from '../utils/valueUtils'
+import { VERSION_ACL_PATCH, VERSION_UPDATE_CONSTRAINT_NAME } from '../ModificationVersions.js'
+import { renameConstraintSchemaUpdater, renameConstraintsSqlBuilder } from '../utils/renameConstraintsHelper.js'
+import { changeValue } from '../utils/valueUtils.js'
 
 export const UpdateFieldNameModification: ModificationHandlerStatic<UpdateFieldNameModificationData> = class {
 	static id = 'updateFieldName'

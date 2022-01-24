@@ -1,8 +1,8 @@
 import { Acl, Model } from '@contember/schema'
-import { checkExtraProperties, everyIs, hasStringProperty, isObject } from './utils'
-import { PredicateDefinitionProcessor } from '../acl'
-import { getEntity } from '../model'
-import { ErrorBuilder, ValidationError } from './errors'
+import { checkExtraProperties, everyIs, hasStringProperty, isObject } from './utils.js'
+import { PredicateDefinitionProcessor } from '../acl/index.js'
+import { getEntity } from '../model/index.js'
+import { ErrorBuilder, ValidationError } from './errors.js'
 
 export class AclValidator {
 	constructor(private readonly model: Model.Schema) {}

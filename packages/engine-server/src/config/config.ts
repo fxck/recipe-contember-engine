@@ -5,7 +5,7 @@ import {
 	resolveParameters,
 	UndefinedParameterError,
 } from '@contember/config-loader'
-import { upperCaseFirst } from '../utils'
+import { upperCaseFirst } from '../utils/index.js'
 import { ConfigProcessor } from '@contember/engine-plugins'
 import { Typesafe } from '@contember/engine-common'
 import { ProjectConfigResolver } from '@contember/engine-http'

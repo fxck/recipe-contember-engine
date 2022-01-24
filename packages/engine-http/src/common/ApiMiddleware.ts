@@ -1,8 +1,8 @@
-import { compose, KoaMiddleware } from '../koa'
-import { createModuleInfoMiddleware } from './ModuleInfoMiddleware'
+import { compose, KoaMiddleware } from '../koa/index.js'
+import { createModuleInfoMiddleware } from './ModuleInfoMiddleware.js'
 import corsMiddleware from '@koa/cors'
-import { AuthMiddlewareFactory } from './AuthMiddleware'
-import { ProjectGroupMiddlewareFactory } from '../project-common'
+import { AuthMiddlewareFactory } from './AuthMiddleware.js'
+import { ProjectGroupMiddlewareFactory } from '../project-common/index.js'
 
 type KoaState = unknown
 

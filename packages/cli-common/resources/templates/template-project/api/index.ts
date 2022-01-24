@@ -1,7 +1,7 @@
 import { InputValidation, SchemaDefinition } from '@contember/schema-definition'
 import { Schema } from '@contember/schema'
-import * as modelDefinition from './model'
-import aclFactory from './acl'
+import * as modelDefinition from './model/index.js'
+import aclFactory from './acl.js'
 
 const model = SchemaDefinition.createModel(modelDefinition)
 

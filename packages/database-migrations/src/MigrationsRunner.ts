@@ -1,15 +1,14 @@
 import { DatabaseCredentials } from '@contember/database'
-import { ClientBase } from 'pg'
-import { RunnerOptionClient, RunnerOptionUrl } from 'node-pg-migrate/dist/types'
-import { createDatabaseIfNotExists } from './helpers'
-import { Migration } from './runner'
+import pg from 'pg'
+import { createDatabaseIfNotExists } from './helpers.js'
+import { Migration } from './runner.js'
 
 export class MigrationsRunner<MigrationArgs> {
 	constructor(
 		private readonly db: DatabaseCredentials,
 		private readonly schema: string,
 		private readonly migrations: () => Promise<Migration[]>,
-		private readonly dbClient?: ClientBase,
+		private readonly dbClient?: pg.Client,
 	) {}
 
 	public async migrate(
@@ -17,17 +16,16 @@ export class MigrationsRunner<MigrationArgs> {
 		migrationArgs?: MigrationArgs,
 	): Promise<{ name: string }[]> {
 		await this.createDatabaseIfNotExists(log)
-		const dbParams: RunnerOptionClient | RunnerOptionUrl = this.dbClient
-			? { dbClient: this.dbClient }
-			: { databaseUrl: this.db }
-		const migrate = (await import('./runner')).default
+
+		const migrate = (await import('./runner.js')).default
 		return await migrate(this.migrations, {
-			...dbParams,
 			schema: this.schema,
 			migrationsTable: 'migrations',
 			createSchema: true,
 			migrationArgs,
 			log,
+			dbClient: this.dbClient ?? new pg.Client(this.db),
+			shouldHandleConnection: !this.dbClient,
 		})
 	}
 

@@ -3,7 +3,7 @@ import {
 	ProjectInitializer as ProjectInitializerInterface,
 	ProjectWithSecrets,
 } from '@contember/engine-tenant-api'
-import { ProjectContainerResolver } from './ProjectContainerResolver'
+import { ProjectContainerResolver } from './ProjectContainerResolver.js'
 
 export class ProjectInitializer implements ProjectInitializerInterface {
 	constructor(

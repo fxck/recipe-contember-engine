@@ -1,9 +1,8 @@
-import { ProjectContainerFactory } from './ProjectContainer'
+import { ProjectContainerFactory } from './ProjectContainer.js'
 import { ProjectConfigResolver, ProjectContainer } from '@contember/engine-http'
-import { ProjectManager, ProjectWithSecrets } from '@contember/engine-tenant-api'
-import { ProjectGroup } from '@contember/engine-tenant-api'
+import { ProjectManager, ProjectWithSecrets, ProjectGroup } from '@contember/engine-tenant-api'
 import { ProjectInitializer as SystemProjectInitializer } from '@contember/engine-system-api'
-import { ProjectGroupState } from './ProjectGroupState'
+import { ProjectGroupState } from './ProjectGroupState.js'
 import { Logger } from '@contember/engine-common'
 
 export class ProjectContainerResolver {

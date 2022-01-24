@@ -1,18 +1,19 @@
-import { Pool, PoolConfig } from 'pg'
-import { EventManager, EventManagerImpl } from './EventManager'
-import { Client } from './Client'
-import { Transaction } from './Transaction'
-import { executeClientOperation, executeQuery } from './execution'
+import type { PoolConfig } from 'pg'
+import pg from 'pg'
+import { EventManager, EventManagerImpl } from './EventManager.js'
+import { Client } from './Client.js'
+import { Transaction } from './Transaction.js'
+import { executeClientOperation, executeQuery } from './execution.js'
 
 class Connection implements Connection.ConnectionLike, Connection.ClientFactory, Connection.PoolStatusProvider {
-	private readonly pool: Pool
+	private readonly pool: pg.Pool
 
 	constructor(
 		public readonly config: PoolConfig,
 		private readonly queryConfig: Connection.QueryConfig,
 		public readonly eventManager: EventManager = new EventManagerImpl(),
 	) {
-		this.pool = new Pool(config)
+		this.pool = new pg.Pool(config)
 		this.pool.on('error', err => {
 			// eslint-disable-next-line no-console
 			console.error(err)

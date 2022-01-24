@@ -1,3 +1,3 @@
-export * from './ApiKey'
-export * from './Project'
-export * from './Variables'
+export * from './ApiKey.js'
+export * from './Project.js'
+export * from './Variables.js'

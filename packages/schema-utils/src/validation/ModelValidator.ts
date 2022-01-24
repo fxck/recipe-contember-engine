@@ -1,7 +1,7 @@
 import { Model } from '@contember/schema'
-import { ErrorBuilder, ValidationError } from './errors'
-import { everyIs, isObject, UnknownObject } from './utils'
-import { acceptEveryFieldVisitor, getTargetEntity, isInverseRelation, isOwningRelation } from '../model'
+import { ErrorBuilder, ValidationError } from './errors.js'
+import { everyIs, isObject, UnknownObject } from './utils.js'
+import { acceptEveryFieldVisitor, getTargetEntity, isInverseRelation, isOwningRelation } from '../model/index.js'
 
 const IDENTIFIER_PATTERN = /^[_a-zA-Z][_a-zA-Z0-9]*$/
 const RESERVED_WORDS = ['and', 'or', 'not']

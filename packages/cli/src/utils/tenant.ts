@@ -1,6 +1,6 @@
 import prompts from 'prompts'
 import { GraphQLClient } from 'graphql-request'
-import { InstanceApiEnvironment } from './instance'
+import { InstanceApiEnvironment } from './instance/index.js'
 
 const validatePassword = (password: string) =>
 	password.length < 6 ? 'Password must contain at least 6 characters' : true

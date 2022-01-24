@@ -1,13 +1,13 @@
-import { Client as PgClient } from 'pg'
-import { EventManager, EventManagerImpl } from './EventManager'
-import { Client } from './Client'
-import { Transaction } from './Transaction'
-import { executeQuery } from './execution'
-import { Connection } from './Connection'
+import  pg from 'pg'
+import { EventManager, EventManagerImpl } from './EventManager.js'
+import { Client } from './Client.js'
+import { Transaction } from './Transaction.js'
+import { executeQuery } from './execution.js'
+import { Connection } from './Connection.js'
 
 class SingleConnection implements Connection.ConnectionLike, Connection.ClientFactory {
 	constructor(
-		private readonly pgClient: PgClient,
+		private readonly pgClient: pg.Client,
 		private readonly queryConfig: Connection.QueryConfig,
 		public readonly eventManager: EventManager = new EventManagerImpl(),
 		private isConnected = false,

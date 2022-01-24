@@ -1,8 +1,8 @@
 import { test } from 'uvu'
-import assert from 'uvu/assert'
-import { MembershipAwareAccessNode } from '../../../../src/model/authorization/MembershipAwareAccessNode'
+import * as assert from 'uvu/assert'
+import { MembershipAwareAccessNode } from '../../../../src/model/authorization/MembershipAwareAccessNode.js'
 import { testUuid } from '@contember/engine-api-tester'
-import { PermissionActions } from '../../../../src'
+import { PermissionActions } from '../../../../src/index.js'
 import { Acl } from '@contember/schema'
 
 const siteIdA = testUuid(666)

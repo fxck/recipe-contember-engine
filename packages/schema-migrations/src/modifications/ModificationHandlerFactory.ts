@@ -1,18 +1,18 @@
 import { Schema } from '@contember/schema'
-import { ModificationHandler, ModificationHandlerStatic } from './ModificationHandler'
-import { CreateColumnModification, UpdateColumnDefinitionModification, UpdateColumnNameModification } from './columns'
-import { PatchValidationSchemaModification, UpdateValidationSchemaModification } from './validation'
-import { PatchAclSchemaModification, UpdateAclSchemaModification } from './acl'
-import { CreateUniqueConstraintModification, RemoveUniqueConstraintModification } from './constraints'
+import { ModificationHandler, ModificationHandlerStatic } from './ModificationHandler.js'
+import { CreateColumnModification, UpdateColumnDefinitionModification, UpdateColumnNameModification } from './columns/index.js'
+import { PatchValidationSchemaModification, UpdateValidationSchemaModification } from './validation/index.js'
+import { PatchAclSchemaModification, UpdateAclSchemaModification } from './acl/index.js'
+import { CreateUniqueConstraintModification, RemoveUniqueConstraintModification } from './constraints/index.js'
 import {
 	CreateEntityModification,
 	CreateViewModification,
 	RemoveEntityModification,
 	UpdateEntityNameModification,
 	UpdateEntityTableNameModification,
-} from './entities'
-import { CreateEnumModification, RemoveEnumModification, UpdateEnumModification } from './enums'
-import { RemoveFieldModification, UpdateFieldNameModification } from './fields'
+} from './entities/index.js'
+import { CreateEnumModification, RemoveEnumModification, UpdateEnumModification } from './enums/index.js'
+import { RemoveFieldModification, UpdateFieldNameModification } from './fields/index.js'
 import {
 	ConvertOneToManyRelationModification,
 	CreateRelationInverseSideModification,
@@ -23,8 +23,8 @@ import {
 	MakeRelationNullableModification,
 	UpdateRelationOnDeleteModification,
 	UpdateRelationOrderByModification,
-} from './relations'
-import { UpdateViewModification } from './entities/UpdateViewModification'
+} from './relations/index.js'
+import { UpdateViewModification } from './entities/UpdateViewModification.js'
 
 class ModificationHandlerFactory {
 	constructor(private readonly map: Record<string, ModificationHandlerStatic<any>>) {}

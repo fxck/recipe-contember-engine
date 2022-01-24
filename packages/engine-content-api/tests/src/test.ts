@@ -1,12 +1,12 @@
 import { Acl, Model, Schema, Validation } from '@contember/schema'
-import { ExecutionContainerFactory, GraphQlSchemaBuilderFactory, StaticAuthorizator } from '../../src'
+import { ExecutionContainerFactory, GraphQlSchemaBuilderFactory, StaticAuthorizator } from '../../src/index.js'
 import { AllowAllPermissionFactory, emptySchema } from '@contember/schema-utils'
-import { executeGraphQlTest } from './testGraphql'
+import { executeGraphQlTest } from './testGraphql.js'
 import { Client } from '@contember/database'
 import { createConnectionMock } from '@contember/database-tester'
 import { createUuidGenerator } from '@contember/engine-api-tester'
-import { getArgumentValues } from 'graphql/execution/values'
-import { SQL } from './tags'
+import { getArgumentValues } from 'graphql/execution/values.js'
+import { SQL } from './tags.js'
 
 export interface SqlQuery {
 	sql: string

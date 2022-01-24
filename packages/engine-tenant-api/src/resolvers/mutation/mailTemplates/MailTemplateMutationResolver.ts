@@ -7,10 +7,10 @@ import {
 	MutationResolvers,
 	RemoveMailTemplateErrorCode,
 	RemoveMailTemplateResponse,
-} from '../../../schema'
-import { ResolverContext } from '../../ResolverContext'
-import { MailTemplateManager, MailType, PermissionActions, ProjectManager } from '../../../model'
-import { createErrorResponse, createProjectNotFoundResponse } from '../../errorUtils'
+} from '../../../schema/index.js'
+import { ResolverContext } from '../../ResolverContext.js'
+import { MailTemplateManager, MailType, PermissionActions, ProjectManager } from '../../../model/index.js'
+import { createErrorResponse, createProjectNotFoundResponse } from '../../errorUtils.js'
 
 export class MailTemplateMutationResolver implements MutationResolvers {
 	constructor(

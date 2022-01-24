@@ -6,9 +6,9 @@ import {
 	ResolverFactory,
 	typeDefs,
 } from '@contember/engine-system-api'
-import { KoaContext, KoaMiddleware } from '../koa'
-import { ProjectGroupState, ProjectMemberMiddlewareState, ProjectResolveMiddlewareState } from '../project-common'
-import { AuthMiddlewareState } from '../common'
+import { KoaContext, KoaMiddleware } from '../koa/index.js'
+import { ProjectGroupState, ProjectMemberMiddlewareState, ProjectResolveMiddlewareState } from '../project-common/index.js'
+import { AuthMiddlewareState } from '../common/index.js'
 import {
 	createDbQueriesListener,
 	createErrorListener,
@@ -17,7 +17,7 @@ import {
 	ErrorLogger,
 	GraphQLKoaState,
 	GraphQLListener,
-} from '../graphql'
+} from '../graphql/index.js'
 import { mergeTypeDefs } from '@graphql-tools/merge'
 import { DocumentNode } from 'graphql'
 import { makeExecutableSchema } from '@graphql-tools/schema'

@@ -1,7 +1,7 @@
-import { KoaMiddleware, KoaRequestState } from '../koa'
-import { ProjectResolveMiddlewareState } from '../project-common'
-import { StageConfig } from '../ProjectConfig'
-import { AuthMiddlewareState, ErrorFactory } from '../common'
+import { KoaMiddleware, KoaRequestState } from '../koa/index.js'
+import { ProjectResolveMiddlewareState } from '../project-common/index.js'
+import { StageConfig } from '../ProjectConfig.js'
+import { AuthMiddlewareState, ErrorFactory } from '../common/index.js'
 
 type InputKoaState =
 	& ProjectResolveMiddlewareState

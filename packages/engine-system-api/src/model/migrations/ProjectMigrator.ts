@@ -1,14 +1,14 @@
 import { Migration, MigrationDescriber } from '@contember/schema-migrations'
 import { Client, QueryError, wrapIdentifier } from '@contember/database'
-import { formatSchemaName } from '../helpers'
+import { formatSchemaName } from '../helpers/index.js'
 import { Schema } from '@contember/schema'
-import { SaveMigrationCommand } from '../commands'
-import { StageWithoutEvent } from '../dtos'
-import { DatabaseContext } from '../database'
-import { ExecutedMigrationsResolver } from './ExecutedMigrationsResolver'
-import { MigrateErrorCode } from '../../schema'
-import { ProjectConfig } from '../../types'
-import { SchemaVersionBuilder } from './SchemaVersionBuilder'
+import { SaveMigrationCommand } from '../commands/index.js'
+import { StageWithoutEvent } from '../dtos/index.js'
+import { DatabaseContext } from '../database/index.js'
+import { ExecutedMigrationsResolver } from './ExecutedMigrationsResolver.js'
+import { MigrateErrorCode } from '../../schema/index.js'
+import { ProjectConfig } from '../../types.js'
+import { SchemaVersionBuilder } from './SchemaVersionBuilder.js'
 
 export class ProjectMigrator {
 	constructor(

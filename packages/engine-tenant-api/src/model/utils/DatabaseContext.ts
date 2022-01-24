@@ -1,6 +1,6 @@
 import { Client, Connection } from '@contember/database'
-import { Providers } from '../providers'
-import { CommandBus } from '../commands'
+import { Providers } from '../providers.js'
+import { CommandBus } from '../commands/index.js'
 
 export class DatabaseContext<Conn extends Connection.ConnectionLike = Connection.ConnectionLike> {
 	constructor(

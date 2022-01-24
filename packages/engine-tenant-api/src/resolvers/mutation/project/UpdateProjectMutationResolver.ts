@@ -3,10 +3,10 @@ import {
 	MutationResolvers,
 	MutationUpdateProjectArgs,
 	UpdateProjectResponse,
-} from '../../../schema'
-import { ResolverContext } from '../../ResolverContext'
-import { PermissionActions, ProjectManager } from '../../../model'
-import { createProjectNotFoundResponse } from '../../errorUtils'
+} from '../../../schema/index.js'
+import { ResolverContext } from '../../ResolverContext.js'
+import { PermissionActions, ProjectManager } from '../../../model/index.js'
+import { createProjectNotFoundResponse } from '../../errorUtils.js'
 import { Merger } from '@contember/config-loader'
 
 export class UpdateProjectMutationResolver implements MutationResolvers {

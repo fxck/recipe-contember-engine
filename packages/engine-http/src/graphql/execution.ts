@@ -1,5 +1,5 @@
 import { DocumentNode, execute, GraphQLError, GraphQLSchema, parse, validate, validateSchema } from 'graphql'
-import { KoaContext } from '../koa'
+import { KoaContext } from '../koa/index.js'
 import LRUCache from 'lru-cache'
 
 export interface GraphQLListener<Context> {

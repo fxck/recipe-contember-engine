@@ -1,6 +1,6 @@
 import { ProjectGroup, ProjectGroupProvider } from '@contember/engine-tenant-api'
-import { KoaMiddleware } from '../koa'
-import { AuthMiddlewareState, ErrorFactory } from '../common'
+import { KoaMiddleware } from '../koa/index.js'
+import { AuthMiddlewareState, ErrorFactory } from '../common/index.js'
 
 export interface ProjectGroupState {
 	projectGroup: ProjectGroup

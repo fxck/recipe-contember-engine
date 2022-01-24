@@ -1,7 +1,7 @@
-import { MasterContainerFactory, MasterContainerArgs } from './MasterContainer'
+import { MasterContainerFactory, MasterContainerArgs } from './MasterContainer.js'
 import { ProjectConfig } from '@contember/engine-http'
-import { readConfig } from './config/config'
-import { ProcessType } from './utils'
+import { readConfig } from './config/config.js'
+import { ProcessType } from './utils/index.js'
 
 export { MasterContainerFactory, ProjectConfig, readConfig, ProcessType }
 

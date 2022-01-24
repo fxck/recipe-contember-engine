@@ -1,5 +1,5 @@
 import supertest from 'supertest'
-import { MasterContainerFactory, ProcessType } from '../../src'
+import { MasterContainerFactory, ProcessType } from '../../src/index.js'
 import { getExampleProjectDirectory, recreateDatabase } from '@contember/engine-api-tester'
 import * as nodeAssert from 'assert'
 import * as assert from 'uvu/assert'

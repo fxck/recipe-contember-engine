@@ -1,8 +1,8 @@
-import { KoaMiddleware, KoaRequestState } from '../koa'
-import { ProjectContainer, ProjectContainerResolver } from '../ProjectContainer'
-import { ProjectConfig } from '../ProjectConfig'
-import { AuthMiddlewareState, ErrorFactory } from '../common'
-import { ProjectGroupState } from './ProjectGroupMiddleware'
+import { KoaMiddleware, KoaRequestState } from '../koa/index.js'
+import { ProjectContainer, ProjectContainerResolver } from '../ProjectContainer.js'
+import { ProjectConfig } from '../ProjectConfig.js'
+import { AuthMiddlewareState, ErrorFactory } from '../common/index.js'
+import { ProjectGroupState } from './ProjectGroupMiddleware.js'
 
 type InputKoaState =
 	& KoaRequestState

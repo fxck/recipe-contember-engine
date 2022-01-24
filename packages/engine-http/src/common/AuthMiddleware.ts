@@ -1,8 +1,8 @@
 import { ApiKeyManager, VerifyResult } from '@contember/engine-tenant-api'
-import { KoaContext, KoaMiddleware } from '../koa'
-import { TimerMiddlewareState } from './TimerMiddleware'
-import { ErrorFactory } from './ErrorFactory'
-import { ProjectGroupState } from '../project-common'
+import { KoaContext, KoaMiddleware } from '../koa/index.js'
+import { TimerMiddlewareState } from './TimerMiddleware.js'
+import { ErrorFactory } from './ErrorFactory.js'
+import { ProjectGroupState } from '../project-common/index.js'
 
 type InputState =
 	& TimerMiddlewareState

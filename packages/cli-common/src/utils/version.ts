@@ -1,7 +1,6 @@
 import { join } from 'path'
-import { packageRoot } from '../pathUtils'
+import { packageRoot } from '../pathUtils.js'
 
-export const getPackageVersion = () => {
-	// eslint-disable-next-line @typescript-eslint/no-var-requires
-	return require(join(packageRoot, 'package.json')).version
+export const getPackageVersion = async () => {
+	return (await import(join(packageRoot, 'package.json'))).version
 }

@@ -1,5 +1,5 @@
 import { AccessEvaluator, AccessNode, Authorizator } from '@contember/authorization'
-import { Membership } from '../type/Membership'
+import { Membership } from '../type/Membership.js'
 import { Acl } from '@contember/schema'
 
 export class MembershipAwareAccessNode implements AccessNode {

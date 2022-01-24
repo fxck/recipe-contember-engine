@@ -1,10 +1,10 @@
-import { ContentSchemaResolver } from './ContentSchemaResolver'
-import { GraphQlSchemaFactory } from './GraphQlSchemaFactory'
-import { ContentQueryHandlerFactory, KoaState } from './ContentQueryHandlerFactory'
+import { ContentSchemaResolver } from './ContentSchemaResolver.js'
+import { GraphQlSchemaFactory } from './GraphQlSchemaFactory.js'
+import { ContentQueryHandlerFactory, KoaState } from './ContentQueryHandlerFactory.js'
 import { GraphQLSchema } from 'graphql'
 import { DatabaseContext } from '@contember/engine-system-api'
-import { KoaMiddleware } from '../koa'
-import { StageConfig } from '../ProjectConfig'
+import { KoaMiddleware } from '../koa/index.js'
+import { StageConfig } from '../ProjectConfig.js'
 
 export class ContentQueryHandlerProvider {
 	private cache = new WeakMap<GraphQLSchema, KoaMiddleware<KoaState>>()

@@ -1,5 +1,5 @@
-import { ProjectGroup, ProjectSchemaResolver } from '../type'
-import { Membership } from '../type/Membership'
+import { ProjectGroup, ProjectSchemaResolver } from '../type/index.js'
+import { Membership } from '../type/Membership.js'
 import { getRoleVariables } from '@contember/schema-utils'
 
 export class MembershipValidator {

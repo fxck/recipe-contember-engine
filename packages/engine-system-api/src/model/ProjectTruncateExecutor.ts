@@ -1,7 +1,7 @@
-import { DatabaseContext } from './database'
-import { ProjectConfig } from '../types'
-import { TruncateEventsCommand, TruncateStagesCommand } from './commands'
-import { formatSchemaName, getJunctionTables } from './helpers'
+import { DatabaseContext } from './database/index.js'
+import { ProjectConfig } from '../types.js'
+import { TruncateEventsCommand, TruncateStagesCommand } from './commands/index.js'
+import { formatSchemaName, getJunctionTables } from './helpers/index.js'
 import { Schema } from '@contember/schema'
 import { wrapIdentifier } from '@contember/database'
 

@@ -1,4 +1,4 @@
-import { Migration, ModificationHandlerFactory, SchemaDiffer, SchemaMigrator, VERSION_LATEST } from '../../src'
+import { Migration, ModificationHandlerFactory, SchemaDiffer, SchemaMigrator, VERSION_LATEST } from '../../src/index.js'
 import { Acl, Model } from '@contember/schema'
 import { createMigrationBuilder } from '@contember/database-migrations'
 import * as assert from 'uvu/assert'

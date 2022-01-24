@@ -1,4 +1,4 @@
-import { Path } from './Path'
+import { Path } from './Path.js'
 import { Value } from '@contember/schema'
 
 export class SelectHydrator {

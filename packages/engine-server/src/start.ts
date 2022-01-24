@@ -1,14 +1,15 @@
 #!/usr/bin/env node
 
-import { createContainer, readConfig } from './index'
+import { createContainer, readConfig } from './index.js'
 import { Server } from 'net'
-import loadPlugins from './loadPlugins'
+import loadPlugins from './loadPlugins.js'
 import { ConfigProcessor } from '@contember/engine-plugins'
-import { join } from 'path'
+import { dirname, join } from 'path'
 import os from 'os'
 import cluster from 'cluster'
-import { getClusterProcessType, initSentry, notifyWorkerStarted, timeout, waitForWorker } from './utils'
-import { ConfigSource } from './config/config'
+import { getClusterProcessType, initSentry, notifyWorkerStarted, timeout, waitForWorker } from './utils/index.js'
+import { ConfigSource } from './config/config.js'
+import { fileURLToPath } from 'url'
 
 const createServerTerminator = (): Server[] => {
 	const signals = [
@@ -33,9 +34,8 @@ const createServerTerminator = (): Server[] => {
 
 ;(async () => {
 	const isDebug = process.env.NODE_ENV === 'development'
-	const packageJsonFile = process.env.CONTEMBER_PACKAGE_JSON || join(__dirname, '../../package.json')
-	// eslint-disable-next-line @typescript-eslint/no-var-requires
-	const version = require(packageJsonFile).version
+	const packageJsonFile = process.env.CONTEMBER_PACKAGE_JSON || join(dirname(fileURLToPath(import.meta.url)), '../../package.json')
+	const version = (await import(packageJsonFile)).version
 
 	if (cluster.isMaster) {
 		// eslint-disable-next-line no-console

@@ -1,6 +1,6 @@
-import { ProjectGroup } from '../type'
-import { DatabaseContextFactory } from '../utils'
-import { MigrationsRunnerFactory } from '../../migrations'
+import { ProjectGroup } from '../type/index.js'
+import { DatabaseContextFactory } from '../utils/index.js'
+import { MigrationsRunnerFactory } from '../../migrations/index.js'
 import { PromiseMap } from '@contember/engine-common'
 
 export class ProjectGroupProvider {

@@ -3,18 +3,18 @@ import {
 	CreateOrUpdateProjectMembershipCommand,
 	CreatePasswordResetRequestCommand,
 	CreatePersonCommand,
-} from '../commands'
-import { Providers } from '../providers'
-import { PersonQuery, PersonRow } from '../queries'
-import { Membership } from '../type/Membership'
-import { InviteErrorCode, InviteMethod } from '../../schema'
-import { TenantRole } from '../authorization'
-import { UserMailer } from '../mailing'
-import { Project } from '../type'
-import { createAppendMembershipVariables } from './membershipUtils'
-import { Response, ResponseOk } from '../utils/Response'
-import { DatabaseContext, TokenHash } from '../utils'
-import { SavePasswordResetRequestCommand } from '../commands/passwordReset/SavePasswordResetRequestCommand'
+} from '../commands/index.js'
+import { Providers } from '../providers.js'
+import { PersonQuery, PersonRow } from '../queries/index.js'
+import { Membership } from '../type/Membership.js'
+import { InviteErrorCode, InviteMethod } from '../../schema/index.js'
+import { TenantRole } from '../authorization/index.js'
+import { UserMailer } from '../mailing/index.js'
+import { Project } from '../type/index.js'
+import { createAppendMembershipVariables } from './membershipUtils.js'
+import { Response, ResponseOk } from '../utils/Response.js'
+import { DatabaseContext, TokenHash } from '../utils/index.js'
+import { SavePasswordResetRequestCommand } from '../commands/passwordReset/SavePasswordResetRequestCommand.js'
 
 export interface InviteOptions {
 	noEmail?: boolean

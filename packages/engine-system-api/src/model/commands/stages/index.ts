@@ -1,2 +1,2 @@
-export * from './CreateOrUpdateStageCommand'
-export * from './TruncateStagesCommand'
+export * from './CreateOrUpdateStageCommand.js'
+export * from './TruncateStagesCommand.js'

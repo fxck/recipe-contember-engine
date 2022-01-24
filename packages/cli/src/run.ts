@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-import { register } from 'ts-node'
 import { Application, CommandManager, getPackageVersion } from '@contember/cli-common'
 import {
 	CreateApiKeyCommand,
@@ -18,14 +16,15 @@ import {
 	SignInCommand,
 	VersionCommand,
 	WorkspaceUpdateApiCommand,
-} from './commands'
-;(async () => {
-	register({
-		compilerOptions: {
-			experimentalDecorators: true,
-			module: 'commonjs',
-		},
-	})
+} from './commands/index.js';
+
+(async () => {
+	// register({
+	// 	compilerOptions: {
+	// 		experimentalDecorators: true,
+	// 		module: 'ES2020',
+	// 	},
+	// })
 	const diffCommandFactory = () => new MigrationDiffCommand()
 	const migrationsDescribeFactory = () => new MigrationDescribeCommand()
 	const commandManager = new CommandManager({
@@ -55,7 +54,7 @@ import {
 	if (nodeVersion && Number(nodeVersion[1]) < 12) {
 		throw `Node >= 12 is required`
 	}
-	const cliVersion = getPackageVersion()
+	const cliVersion = await getPackageVersion()
 	const app = new Application(commandManager, `Contember CLI version ${cliVersion}`)
 	await app.run(process.argv.slice(2))
 })().catch(e => {

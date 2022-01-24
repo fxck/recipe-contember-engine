@@ -5,7 +5,7 @@ import {
 	ModificationHandlerFactory,
 	SchemaDiffer,
 	SchemaMigrator,
-} from '../../src'
+} from '../../src/index.js'
 import { emptySchema } from '@contember/schema-utils'
 ;(async () => {
 	const migrationsResolver = new MigrationsResolver(new MigrationFilesManager(relative(process.cwd(), process.argv[2])))

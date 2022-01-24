@@ -1,7 +1,6 @@
-import { GraphQLTestQuery } from '../cases/integration/mocked/gql/types'
-import { testUuid } from './testUuid'
-import { DatabaseContext, ProjectGroup, ProjectSchemaResolver } from '../../src'
-import {
+import { GraphQLTestQuery } from '../cases/integration/mocked/gql/types.js'
+import { testUuid } from './testUuid.js'
+import { DatabaseContext, ProjectGroup, ProjectSchemaResolver,
 	AclSchemaEvaluatorFactory,
 	createResolverContext,
 	PermissionContext,
@@ -9,14 +8,13 @@ import {
 	ResolverContext,
 	StaticIdentity,
 	TenantContainerFactory,
-	typeDefs,
-} from '../../src'
+	typeDefs } from '../../src/index.js'
 import { Buffer } from 'buffer'
 import { makeExecutableSchema } from '@graphql-tools/schema'
-import { executeGraphQlTest } from './testGraphql'
+import { executeGraphQlTest } from './testGraphql.js'
 import { createConnectionMock, ExpectedQuery } from '@contember/database-tester'
 import { Acl, Schema } from '@contember/schema'
-import { createMockedMailer, ExpectedMessage } from './mailer'
+import { createMockedMailer, ExpectedMessage } from './mailer.js'
 
 export interface Test {
 	query: GraphQLTestQuery

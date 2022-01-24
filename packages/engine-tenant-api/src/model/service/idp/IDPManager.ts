@@ -1,5 +1,5 @@
-import { IdentityProvider, IDPClaim, IDPResponse, InitIDPAuthResult } from './IdentityProvider'
-import { IdentityProviderNotFoundError } from './IdentityProviderNotFoundError'
+import { IdentityProvider, IDPClaim, IDPResponse, InitIDPAuthResult } from './IdentityProvider.js'
+import { IdentityProviderNotFoundError } from './IdentityProviderNotFoundError.js'
 
 export class IDPManager {
 	private providers: Record<string, IdentityProvider<any, any>> = {}

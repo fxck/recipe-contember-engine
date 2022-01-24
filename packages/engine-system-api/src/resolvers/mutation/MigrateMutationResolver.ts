@@ -1,9 +1,9 @@
 import { GraphQLResolveInfo } from 'graphql'
-import { ResolverContext } from '../ResolverContext'
-import { MutationResolver } from '../Resolver'
-import { MigrateResponse, MutationMigrateArgs } from '../../schema'
+import { ResolverContext } from '../ResolverContext.js'
+import { MutationResolver } from '../Resolver.js'
+import { MigrateResponse, MutationMigrateArgs } from '../../schema/index.js'
 import { Migration } from '@contember/schema-migrations'
-import { AuthorizationActions, MigrationError, ProjectMigrator } from '../../model'
+import { AuthorizationActions, MigrationError, ProjectMigrator } from '../../model/index.js'
 
 export class MigrateMutationResolver implements MutationResolver<'migrate'> {
 	constructor(private readonly projectMigrator: ProjectMigrator) {}

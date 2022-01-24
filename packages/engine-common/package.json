@@ -2,6 +2,7 @@
   "name": "@contember/engine-common",
   "version": "1.0.0-rc.3",
   "license": "Apache-2.0",
+  "type": "module",
   "main": "dist/src/index.js",
   "scripts": {
     "test": "echo 'No tests'"

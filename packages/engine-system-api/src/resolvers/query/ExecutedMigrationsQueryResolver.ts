@@ -1,8 +1,8 @@
 import { GraphQLResolveInfo } from 'graphql'
-import { ResolverContext } from '../ResolverContext'
-import { QueryResolver } from '../Resolver'
-import { ExecutedMigration, QueryExecutedMigrationsArgs } from '../../schema'
-import { ExecutedMigrationByVersionQuery, ExecutedMigrationsQuery } from '../../model'
+import { ResolverContext } from '../ResolverContext.js'
+import { QueryResolver } from '../Resolver.js'
+import { ExecutedMigration, QueryExecutedMigrationsArgs } from '../../schema/index.js'
+import { ExecutedMigrationByVersionQuery, ExecutedMigrationsQuery } from '../../model/index.js'
 
 export class ExecutedMigrationsQueryResolver implements QueryResolver<'executedMigrations'> {
 	async executedMigrations(

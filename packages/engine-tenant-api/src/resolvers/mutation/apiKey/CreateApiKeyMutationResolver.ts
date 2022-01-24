@@ -3,12 +3,12 @@ import {
 	CreateApiKeyResponse,
 	MutationCreateApiKeyArgs, MutationCreateGlobalApiKeyArgs,
 	MutationResolvers,
-} from '../../../schema'
+} from '../../../schema/index.js'
 import { GraphQLResolveInfo } from 'graphql'
-import { ResolverContext } from '../../ResolverContext'
-import { ApiKeyManager, isTokenHash, MembershipValidator, PermissionActions, ProjectManager } from '../../../model'
-import { createMembershipValidationErrorResult } from '../../membershipUtils'
-import { createProjectNotFoundResponse } from '../../errorUtils'
+import { ResolverContext } from '../../ResolverContext.js'
+import { ApiKeyManager, isTokenHash, MembershipValidator, PermissionActions, ProjectManager } from '../../../model/index.js'
+import { createMembershipValidationErrorResult } from '../../membershipUtils.js'
+import { createProjectNotFoundResponse } from '../../errorUtils.js'
 import { UserInputError } from 'apollo-server-errors'
 
 export class CreateApiKeyMutationResolver implements MutationResolvers {

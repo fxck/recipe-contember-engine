@@ -1,7 +1,7 @@
 import { Model, Validation } from '@contember/schema'
-import { ErrorBuilder, ValidationError } from './errors'
-import { everyIs, hasArrayProperty, hasStringProperty, isArray, isObject } from './utils'
-import { acceptFieldVisitor } from '../model'
+import { ErrorBuilder, ValidationError } from './errors.js'
+import { everyIs, hasArrayProperty, hasStringProperty, isArray, isObject } from './utils.js'
+import { acceptFieldVisitor } from '../model/index.js'
 
 export class ValidationValidator {
 	constructor(private readonly model: Model.Schema) {}

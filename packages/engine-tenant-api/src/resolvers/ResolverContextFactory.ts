@@ -1,5 +1,5 @@
-import { ResolverContext } from './ResolverContext'
-import { PermissionContext, PermissionContextFactory, ProjectGroup } from '../model'
+import { ResolverContext } from './ResolverContext.js'
+import { PermissionContext, PermissionContextFactory, ProjectGroup } from '../model/index.js'
 
 export const createResolverContext = (permissionContext: PermissionContext, apiKeyId: string) => {
 	return {

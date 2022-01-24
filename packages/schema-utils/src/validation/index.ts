@@ -1,3 +1,3 @@
-export * from './AclValidator'
-export * from './errors'
-export * from './SchemaValidator'
+export * from './AclValidator.js'
+export * from './errors.js'
+export * from './SchemaValidator.js'

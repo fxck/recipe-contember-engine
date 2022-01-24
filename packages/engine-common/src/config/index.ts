@@ -1,1 +1,1 @@
-export * as Typesafe from './Typesafe'
+export * as Typesafe from './Typesafe.js'

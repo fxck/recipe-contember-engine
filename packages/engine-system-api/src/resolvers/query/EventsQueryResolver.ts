@@ -1,8 +1,8 @@
 import { GraphQLResolveInfo } from 'graphql'
-import { ResolverContext } from '../ResolverContext'
-import { QueryResolver } from '../Resolver'
-import { EventsOrder, QueryEventsArgs, ResolversTypes } from '../../schema'
-import { AuthorizationActions, EventResponseBuilder, EventsQuery, StageBySlugQuery } from '../../model'
+import { ResolverContext } from '../ResolverContext.js'
+import { QueryResolver } from '../Resolver.js'
+import { EventsOrder, QueryEventsArgs, ResolversTypes } from '../../schema/index.js'
+import { AuthorizationActions, EventResponseBuilder, EventsQuery, StageBySlugQuery } from '../../model/index.js'
 import { UserInputError } from 'apollo-server-errors'
 
 export class EventsQueryResolver implements QueryResolver<'events'> {

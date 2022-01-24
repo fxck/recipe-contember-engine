@@ -1,1 +1,1 @@
-export * from './EntitiesSelector'
+export * from './EntitiesSelector.js'

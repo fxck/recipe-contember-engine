@@ -1,2 +1,2 @@
-export * from './assertNever'
-export * from './tuple'
+export * from './assertNever.js'
+export * from './tuple.js'

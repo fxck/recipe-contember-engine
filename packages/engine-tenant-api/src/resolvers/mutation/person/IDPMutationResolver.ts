@@ -4,12 +4,12 @@ import {
 	MutationResolvers,
 	MutationSignInIdpArgs,
 	SignInIdpResponse,
-} from '../../../schema'
-import { ResolverContext } from '../../ResolverContext'
-import { IDPSignInManager, PermissionActions, PermissionContextFactory } from '../../../model'
-import { createResolverContext } from '../../ResolverContextFactory'
-import { IdentityTypeResolver } from '../../types'
-import { createErrorResponse } from '../../errorUtils'
+} from '../../../schema/index.js'
+import { ResolverContext } from '../../ResolverContext.js'
+import { IDPSignInManager, PermissionActions, PermissionContextFactory } from '../../../model/index.js'
+import { createResolverContext } from '../../ResolverContextFactory.js'
+import { IdentityTypeResolver } from '../../types/index.js'
+import { createErrorResponse } from '../../errorUtils.js'
 
 export class IDPMutationResolver implements MutationResolvers {
 	constructor(

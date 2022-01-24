@@ -1,12 +1,9 @@
 import { makeExecutableSchema } from '@graphql-tools/schema'
-import { ResolverContextFactory, Schema, typeDefs } from '@contember/engine-tenant-api'
-import { AuthMiddlewareState } from '../common'
-import { KoaContext, KoaMiddleware } from '../koa'
-import { createGraphQLQueryHandler } from '../graphql'
-import { ResolverContext } from '@contember/engine-tenant-api'
-import { createGraphqlRequestInfoProviderListener, GraphQLKoaState } from '../graphql'
-import { createErrorListener, ErrorLogger } from '../graphql'
-import { ProjectGroupState } from '../project-common'
+import { ResolverContextFactory, Schema, typeDefs, ResolverContext } from '@contember/engine-tenant-api'
+import { AuthMiddlewareState } from '../common/index.js'
+import { KoaContext, KoaMiddleware } from '../koa/index.js'
+import { createGraphQLQueryHandler, createGraphqlRequestInfoProviderListener, GraphQLKoaState, createErrorListener, ErrorLogger } from '../graphql/index.js'
+import { ProjectGroupState } from '../project-common/index.js'
 
 type KoaState =
 	& ProjectGroupState

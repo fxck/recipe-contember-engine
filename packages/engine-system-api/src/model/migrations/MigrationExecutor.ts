@@ -2,9 +2,9 @@ import { wrapIdentifier } from '@contember/database'
 import { Schema } from '@contember/schema'
 import { Migration, ModificationHandlerFactory } from '@contember/schema-migrations'
 import { createMigrationBuilder } from '@contember/database-migrations'
-import { Stage } from '../dtos'
-import { formatSchemaName } from '../helpers'
-import { DatabaseContext } from '../database'
+import { Stage } from '../dtos/index.js'
+import { formatSchemaName } from '../helpers/index.js'
+import { DatabaseContext } from '../database/index.js'
 
 export class MigrationExecutor {
 	constructor(private readonly modificationHandlerFactory: ModificationHandlerFactory) {}

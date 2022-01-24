@@ -1,4 +1,4 @@
-import { DatabaseContext, Identity, PermissionContext, ProjectGroup } from '../model'
+import { DatabaseContext, Identity, PermissionContext, ProjectGroup } from '../model/index.js'
 
 export interface ResolverContext {
 	readonly apiKeyId: string

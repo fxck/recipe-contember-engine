@@ -1,8 +1,8 @@
 import { AccessNode, AuthorizationScope, Authorizator } from '@contember/authorization'
 import { ForbiddenError } from 'apollo-server-errors'
-import { ProjectScopeFactory } from './ProjectScopeFactory'
-import { Project, ProjectGroup } from '../type'
-import { Identity } from './Identity'
+import { ProjectScopeFactory } from './ProjectScopeFactory.js'
+import { Project, ProjectGroup } from '../type/index.js'
+import { Identity } from './Identity.js'
 
 export type AccessVerifier = (action: Authorizator.Action) => Promise<boolean>
 

@@ -16,11 +16,11 @@ import {
 	SignUpMutationResolver,
 	UpdateProjectMemberMutationResolver,
 	UpdateProjectMutationResolver,
-} from './mutation'
+} from './mutation/index.js'
 
-import { Resolvers } from '../schema'
-import { MeQueryResolver, ProjectMembersQueryResolver, ProjectQueryResolver } from './query'
-import { IdentityTypeResolver, ProjectTypeResolver } from './types'
+import { Resolvers } from '../schema/index.js'
+import { MeQueryResolver, ProjectMembersQueryResolver, ProjectQueryResolver } from './query/index.js'
+import { IdentityTypeResolver, ProjectTypeResolver } from './types/index.js'
 import { JSONType } from '@contember/graphql-utils'
 
 class ResolverFactory {

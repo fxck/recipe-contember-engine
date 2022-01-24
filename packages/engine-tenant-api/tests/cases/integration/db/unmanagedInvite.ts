@@ -1,8 +1,8 @@
-import { dbSuite } from '../../../src/testTenantDb'
-import { testUuid } from '../../../src/testUuid'
-import { unmanagedInviteMutation } from '../mocked/gql/unmanagedInvite'
-import { signInMutation } from '../mocked/gql/signIn'
-import { TenantRole } from '../../../../src/model/authorization'
+import { dbSuite } from '../../../src/testTenantDb.js'
+import { testUuid } from '../../../src/testUuid.js'
+import { unmanagedInviteMutation } from '../mocked/gql/unmanagedInvite.js'
+import { signInMutation } from '../mocked/gql/signIn.js'
+import { TenantRole } from '../../../../src/model/authorization/index.js'
 import * as assert from 'uvu/assert'
 
 const inviteSuite = dbSuite('unmanaged invite')

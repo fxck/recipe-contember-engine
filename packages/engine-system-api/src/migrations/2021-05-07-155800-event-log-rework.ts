@@ -1,5 +1,8 @@
 import { MigrationBuilder, Name } from '@contember/database-migrations'
-import { formatSchemaName, getJunctionTables, MigrationArgs } from '..'
+import { SystemMigrationArgs } from './types.js'
+import { getJunctionTables } from '../model/helpers/modelHelpers.js'
+import { formatSchemaName } from '../model/helpers/stageHelpers.js'
+// eslint-disable-next-line @contember/custom-rules/es-import
 
 const createTrxEvent = (builder: MigrationBuilder, tableName: Name) => {
 	builder.createTrigger(tableName, 'log_event_trx', {
@@ -15,7 +18,7 @@ const createTrxEvent = (builder: MigrationBuilder, tableName: Name) => {
 	})
 }
 
-export default async function (builder: MigrationBuilder, args: MigrationArgs) {
+export default async function (builder: MigrationBuilder, args: SystemMigrationArgs) {
 	const schema = await args.schemaResolver()
 	const junctionTables = getJunctionTables(schema.model)
 	const schemas = args.project.stages.map(formatSchemaName)

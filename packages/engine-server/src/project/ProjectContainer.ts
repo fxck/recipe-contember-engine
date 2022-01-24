@@ -1,19 +1,17 @@
 import { Builder } from '@contember/dic'
 import { Connection } from '@contember/database'
 import { DatabaseContextFactory, SchemaVersionBuilder } from '@contember/engine-system-api'
-import { logSentryError } from '../utils'
+import { logSentryError } from '../utils/index.js'
 import { ModificationHandlerFactory } from '@contember/schema-migrations'
 import { GraphQlSchemaBuilderFactory, PermissionsByIdentityFactory } from '@contember/engine-content-api'
 import { GraphQLSchemaContributor, Plugin } from '@contember/engine-plugins'
-import {
-	ProjectConfig,
+import { ProjectConfig,
 	ContentQueryHandlerProvider,
 	ContentSchemaResolver,
 	GraphQlSchemaFactory,
 	Providers,
 	ProjectContainer,
-} from '@contember/engine-http'
-import { ContentQueryHandlerFactory } from '@contember/engine-http'
+	ContentQueryHandlerFactory } from '@contember/engine-http'
 
 export class ProjectContainerFactory {
 	constructor(

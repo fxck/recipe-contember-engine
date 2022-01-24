@@ -1,6 +1,6 @@
 import { Input, Model } from '@contember/schema'
-import { OrderByHelper } from '../../../src/mapper'
-import { ObjectNode } from '../../../src/inputProcessing'
+import { OrderByHelper } from '../../../src/mapper/index.js'
+import { ObjectNode } from '../../../src/inputProcessing/index.js'
 import * as assert from 'uvu/assert'
 import { suite } from 'uvu'
 

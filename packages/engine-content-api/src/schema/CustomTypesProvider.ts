@@ -1,6 +1,6 @@
 import { GraphQLScalarType, Kind } from 'graphql'
 import { JSONType } from '@contember/graphql-utils'
-import { singletonFactory } from '../utils'
+import { singletonFactory } from '../utils/index.js'
 
 //todo: implement serialize, parseValue and parseLiteral properly
 

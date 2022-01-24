@@ -8,15 +8,15 @@ import {
 	ErrorLogger,
 	GraphQLKoaState,
 	GraphQLListener,
-} from '../graphql'
-import { KoaContext, KoaMiddleware } from '../koa'
-import { ProjectMemberMiddlewareState } from '../project-common'
-import { getArgumentValues } from 'graphql/execution/values'
+} from '../graphql/index.js'
+import { KoaContext, KoaMiddleware } from '../koa/index.js'
+import { ProjectMemberMiddlewareState } from '../project-common/index.js'
+import { getArgumentValues } from 'graphql/execution/values.js'
 import { setupSystemVariables } from '@contember/engine-system-api'
 import { v4 as uuidv4 } from 'uuid'
 import { Acl, Schema } from '@contember/schema'
-import { ContentServerMiddlewareState } from './ContentServerMiddleware'
-import { AuthMiddlewareState, TimerMiddlewareState } from '../common'
+import { ContentServerMiddlewareState } from './ContentServerMiddleware.js'
+import { AuthMiddlewareState, TimerMiddlewareState } from '../common/index.js'
 
 export type KoaState =
 	& ProjectMemberMiddlewareState

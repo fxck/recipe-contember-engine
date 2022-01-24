@@ -7,11 +7,11 @@ import {
 	MutationPrepareOtpArgs,
 	MutationResolvers,
 	PrepareOtpResponse,
-} from '../../../schema'
-import { ResolverContext } from '../../ResolverContext'
-import { DatabaseContext, OtpManager, PermissionActions, PersonQuery, PersonRow } from '../../../model'
-import { ImplementationException } from '../../../exceptions'
-import { createErrorResponse } from '../../errorUtils'
+} from '../../../schema/index.js'
+import { ResolverContext } from '../../ResolverContext.js'
+import { DatabaseContext, OtpManager, PermissionActions, PersonQuery, PersonRow } from '../../../model/index.js'
+import { ImplementationException } from '../../../exceptions.js'
+import { createErrorResponse } from '../../errorUtils.js'
 
 export class OtpMutationResolver implements MutationResolvers {
 	constructor(private readonly otpManager: OtpManager) {}

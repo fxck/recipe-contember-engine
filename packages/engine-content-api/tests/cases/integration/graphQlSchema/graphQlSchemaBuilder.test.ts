@@ -2,13 +2,14 @@ import { graphql, printSchema } from 'graphql'
 import { Acl, Model } from '@contember/schema'
 import * as path from 'path'
 
-import { AllowAllPermissionFactory, SchemaBuilder, SchemaDefinition } from '@contember/schema-definition'
-import { GraphQlSchemaBuilderFactory, StaticAuthorizator } from '../../../../src'
-import * as model from './model'
+import { AllowAllPermissionFactory, SchemaBuilder, SchemaDefinition, SchemaDefinition as def } from '@contember/schema-definition'
+import { GraphQlSchemaBuilderFactory, StaticAuthorizator } from '../../../../src/index.js'
+import * as model from './model.js'
 import { promises as fs } from 'fs'
 import * as assert from 'uvu/assert'
 import { suite } from 'uvu'
-import { SchemaDefinition as def } from '@contember/schema-definition'
+import { dirname } from 'path'
+import { fileURLToPath } from 'url'
 
 interface Test {
 	schema: (builder: SchemaBuilder) => SchemaBuilder | Model.Schema
@@ -42,7 +43,7 @@ const testSchema = async (test: Test) => {
 
 	const textSchema = printSchema(graphQlSchema)
 
-	const filename = path.join(__dirname, test.graphQlSchemaFile)
+	const filename = path.join(dirname(fileURLToPath(import.meta.url)), test.graphQlSchemaFile)
 	let expectedSchema: string
 	try {
 		expectedSchema = await fs.readFile(filename, { encoding: 'utf8' })

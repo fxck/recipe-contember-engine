@@ -5,17 +5,15 @@ import {
 	setupSystemVariables,
 } from '@contember/engine-system-api'
 import { AllowAllPermissionFactory } from '@contember/schema-utils'
-import {
-	Context as ContentContext,
+import { Context as ContentContext,
 	ExecutionContainerFactory,
 	GraphQlSchemaBuilderFactory,
-} from '@contember/engine-content-api'
+	StaticAuthorizator } from '@contember/engine-content-api'
 import { graphql } from 'graphql'
-import { TesterStageManager } from './TesterStageManager'
+import { TesterStageManager } from './TesterStageManager.js'
 import { Schema } from '@contember/schema'
-import { createUuidGenerator } from './testUuid'
-import { getArgumentValues } from 'graphql/execution/values'
-import { StaticAuthorizator } from '@contember/engine-content-api'
+import { createUuidGenerator } from './testUuid.js'
+import { getArgumentValues } from 'graphql/execution/values.js'
 
 export class ContentApiTester {
 	private trxUuidGenerator = createUuidGenerator('a453')

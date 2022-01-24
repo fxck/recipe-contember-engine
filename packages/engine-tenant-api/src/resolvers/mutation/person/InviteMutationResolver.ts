@@ -6,8 +6,8 @@ import {
 	MutationInviteArgs,
 	MutationResolvers,
 	MutationUnmanagedInviteArgs,
-} from '../../../schema'
-import { ResolverContext } from '../../ResolverContext'
+} from '../../../schema/index.js'
+import { ResolverContext } from '../../ResolverContext.js'
 import {
 	InviteManager,
 	InviteOptions,
@@ -17,9 +17,9 @@ import {
 	Project,
 	ProjectGroup,
 	ProjectManager,
-} from '../../../model'
-import { createMembershipValidationErrorResult } from '../../membershipUtils'
-import { createErrorResponse, createProjectNotFoundResponse } from '../../errorUtils'
+} from '../../../model/index.js'
+import { createMembershipValidationErrorResult } from '../../membershipUtils.js'
+import { createErrorResponse, createProjectNotFoundResponse } from '../../errorUtils.js'
 import { UserInputError } from 'apollo-server-errors'
 
 export class InviteMutationResolver implements MutationResolvers {

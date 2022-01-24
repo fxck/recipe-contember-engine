@@ -1,6 +1,6 @@
-import { Membership, QueryProjectMembershipsArgs, QueryResolvers } from '../../schema'
-import { ResolverContext } from '../ResolverContext'
-import { PermissionActions, ProjectManager, ProjectMemberManager } from '../../model'
+import { Membership, QueryProjectMembershipsArgs, QueryResolvers } from '../../schema/index.js'
+import { ResolverContext } from '../ResolverContext.js'
+import { PermissionActions, ProjectManager, ProjectMemberManager } from '../../model/index.js'
 
 export class ProjectMembersQueryResolver implements QueryResolvers {
 	constructor(

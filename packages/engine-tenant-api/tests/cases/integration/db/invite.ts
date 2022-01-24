@@ -1,7 +1,7 @@
-import { dbSuite } from '../../../src/testTenantDb'
-import { inviteMutation } from '../mocked/gql/invite'
-import { testUuid } from '../../../src/testUuid'
-import { GQL } from '../../../src/tags'
+import { dbSuite } from '../../../src/testTenantDb.js'
+import { inviteMutation } from '../mocked/gql/invite.js'
+import { testUuid } from '../../../src/testUuid.js'
+import { GQL } from '../../../src/tags.js'
 import * as assert from 'uvu/assert'
 
 const inviteSuite = dbSuite('invite permissions')
