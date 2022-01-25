@@ -1,7 +1,9 @@
-const path = require('path')
+import path from 'path'
+import { fileURLToPath } from 'url'
 
-const root = path.dirname(path.dirname(__dirname))
-const resolvePlugin = {
+const root = path.dirname(path.dirname(path.dirname(fileURLToPath(import.meta.url))))
+
+export const resolvePlugin = {
 	name: 'resolve contember',
 	setup(build) {
 		build.onResolve({ filter: /^@contember\/.+$/ }, args => {
@@ -17,4 +19,3 @@ const resolvePlugin = {
 
 	},
 }
-module.exports = { resolvePlugin }

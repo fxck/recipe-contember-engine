@@ -1,4 +1,4 @@
-FROM node:14-alpine as builder
+FROM node:16-alpine as builder
 
 WORKDIR /src
 RUN apk --no-cache add bash
@@ -6,7 +6,7 @@ RUN apk --no-cache add --virtual builds-deps build-base python2
 COPY ./ ./
 RUN /src/packages/cli/build.sh
 
-FROM node:14-alpine
+FROM node:16-alpine
 
 WORKDIR /src
 ENV NODE_ENV "production"
@@ -14,6 +14,8 @@ ENV NODE_ENV "production"
 COPY --from=builder /src/dist/ /opt/contember/
 COPY --from=builder /src/packages/cli-common/resources /opt/contember/resources
 COPY --from=builder /src/packages/cli/package.json /opt/contember/package.json
-RUN ln -s /opt/contember/run.js /usr/bin/contember
+RUN npm install -g typescript ts-node
+RUN ln -s /opt/contember/run.cjs /usr/bin/contember
 ENV CONTEMBER_CLI_PACKAGE_ROOT /opt/contember
-ENTRYPOINT ["node", "/opt/contember/run.js"]
+ENV NODE_OPTIONS "--loader ts-node/esm"
+ENTRYPOINT ["node", "/opt/contember/run.cjs"]

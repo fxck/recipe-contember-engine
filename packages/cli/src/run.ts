@@ -19,12 +19,6 @@ import {
 } from './commands/index.js';
 
 (async () => {
-	// register({
-	// 	compilerOptions: {
-	// 		experimentalDecorators: true,
-	// 		module: 'ES2020',
-	// 	},
-	// })
 	const diffCommandFactory = () => new MigrationDiffCommand()
 	const migrationsDescribeFactory = () => new MigrationDescribeCommand()
 	const commandManager = new CommandManager({

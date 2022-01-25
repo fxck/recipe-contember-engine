@@ -10,6 +10,7 @@ import cluster from 'cluster'
 import { getClusterProcessType, initSentry, notifyWorkerStarted, timeout, waitForWorker } from './utils/index.js'
 import { ConfigSource } from './config/config.js'
 import { fileURLToPath } from 'url'
+import fs from 'fs/promises'
 
 const createServerTerminator = (): Server[] => {
 	const signals = [
@@ -35,7 +36,8 @@ const createServerTerminator = (): Server[] => {
 ;(async () => {
 	const isDebug = process.env.NODE_ENV === 'development'
 	const packageJsonFile = process.env.CONTEMBER_PACKAGE_JSON || join(dirname(fileURLToPath(import.meta.url)), '../../package.json')
-	const version = (await import(packageJsonFile)).version
+	const packageJsonContent = (await fs.readFile(packageJsonFile, 'utf-8'))
+	const version = JSON.parse(packageJsonContent).version
 
 	if (cluster.isMaster) {
 		// eslint-disable-next-line no-console

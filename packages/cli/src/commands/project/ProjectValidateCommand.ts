@@ -4,6 +4,7 @@ import { Schema } from '@contember/schema'
 import { validateSchemaAndPrintErrors } from '../../utils/schema.js'
 import { emptySchema } from '@contember/schema-utils'
 import { validateMigrations } from '../migrations/MigrationValidationHelper.js'
+import { loadSchema } from '../../utils/project.js'
 
 type Args = {
 	project: string
@@ -41,7 +42,7 @@ export class ProjectValidateCommand extends Command<Args, Options> {
 				container.migrationDescriber,
 				container.schemaMigrator,
 			)
-			const schema: Schema = (await import(project.apiDir)).default
+			const schema: Schema = await loadSchema(project)
 			projectValid = validateSchemaAndPrintErrors(schema, 'Defined schema is invalid:') && projectValid
 
 			const builtSchema = await container.schemaVersionBuilder.buildSchema()

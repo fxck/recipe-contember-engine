@@ -29,11 +29,11 @@ SOFTWARE.
 import path, { join } from 'path'
 import { LogFn, Logger } from 'node-pg-migrate/dist/types'
 import { createSchemalize, getSchemas } from 'node-pg-migrate/dist/utils.js'
-import migrateSqlFile from 'node-pg-migrate/dist/sqlMigration.js'
 import { MigrationBuilder } from 'node-pg-migrate'
 import { createMigrationBuilder } from './helpers.js'
 import { readdir } from 'fs/promises'
 import { Client, ClientBase } from 'pg'
+import fs from 'fs/promises'
 
 export interface RunnerOption {
 	migrationsTable: string
@@ -72,11 +72,8 @@ export const loadMigrations = async (sqlDir: string, additional: Migration[]): P
 			)
 				.filter(it => path.extname(it) === '.sql')
 				.map(async it => {
-					const migration = (await (migrateSqlFile as any).default(join(sqlDir, it))).up
-					if (!migration) {
-						throw new Error()
-					}
-					return new Migration(path.basename(it, path.extname(it)), migration)
+					const migrationContent = await fs.readFile(join(sqlDir, it), 'utf-8')
+					return new Migration(path.basename(it, path.extname(it)), builder => builder.sql(migrationContent))
 				}),
 		)
 	)

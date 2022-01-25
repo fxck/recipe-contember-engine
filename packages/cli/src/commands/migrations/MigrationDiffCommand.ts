@@ -7,6 +7,7 @@ import { createMigrationStatusTable, printMigrationDescription } from '../../uti
 import { executeMigrations, resolveMigrationStatus } from './MigrationExecuteHelper.js'
 import { resolveSystemApiClient } from './SystemApiClientResolver.js'
 import prompts from 'prompts'
+import { loadSchema } from '../../utils/project.js'
 
 type Args = {
 	project: string
@@ -40,8 +41,7 @@ export class MigrationDiffCommand extends Command<Args, Options> {
 				migrationCreator,
 				migrationDescriber,
 			}) => {
-				// eslint-disable-next-line @typescript-eslint/no-var-requires
-				const schema: Schema = require(project.apiDir).default
+				const schema: Schema = await loadSchema(project)
 				try {
 					const migrationName = input.getArgument('migrationName')
 					const initialSchema = await schemaVersionBuilder.buildSchema()
