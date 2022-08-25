@@ -1,0 +1,9 @@
+engine:
+  build:
+    base: [ nodejs@16 ]
+    build:
+      - yarn --production=false
+      - yarn ts:build
+    deploy: [ ./ ]
+  run:
+    start: node ./packages/engine-server/dist/src/start.js
